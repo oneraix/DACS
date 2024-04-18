@@ -1,12 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DACS.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DACS.Controllers
 {
     public class ClassController : Controller
     {
-        public IActionResult Index()
+        private readonly IClassRepository _classRepository;
+        public ClassController(IClassRepository classRepository)
         {
-            return View();
+            _classRepository = classRepository;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var @classes = await _classRepository.GetAllAsync();
+            return View(@classes);
         }
     }
 }
