@@ -1,0 +1,40 @@
+﻿@model DACS.Models.Class
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Edit Class";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
+
+    <form asp-action="Edit" method="post">
+        <div class="form-group">
+            <label asp-for="MaPhongHoc"></label>
+            <input asp-for="MaPhongHoc" class="form-control" readonly />
+            <span asp-validation-for="MaPhongHoc" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SoPhong"></label>
+            <input asp-for="SoPhong" class="form-control" />
+            <span asp-validation-for="SoPhong" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Tang"></label>
+            <input asp-for="Tang" class="form-control" />
+            <span asp-validation-for="Tang" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="GhiChu"></label>
+            <input asp-for="GhiChu" class="form-control" />
+            <span asp-validation-for="GhiChu" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MaLoaiPhong"></label>
+            <select asp-for="MaLoaiPhong" class="form-control" asp-items="ViewBag.MaLoaiPhong"></select>
+            <span asp-validation-for="MaLoaiPhong" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>

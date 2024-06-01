@@ -1,0 +1,52 @@
+﻿@model DACS.Models.Class
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Details";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Class Details</h1>
+        <hr />
+        <div class="card">
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Số phòng:</dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.SoPhong)
+                    </dd>
+                    <dt class="col-sm-4">Tầng:</dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.Tang)
+                    </dd>
+                    <dt class="col-sm-4">Trạng thái:</dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.TrangThai)
+                    </dd>
+                    <dt class="col-sm-4">Note:</dt>
+                    <dd class="col-sm-8">
+                        @Html.DisplayFor(model => model.GhiChu)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="mt-4">
+            <a asp-action="Edit" asp-route-id="@Model?.MaPhongHoc" class="btn btn-primary">Edit</a>
+            <a asp-action="Index" class="btn btn-secondary ml-2">Quay lại</a>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

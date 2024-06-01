@@ -1,8 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using DACS.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using DACS.Models;
 
 namespace DACS.Repositories
+{
+    public interface IClassRepository
+    {
+        Task<IEnumerable<Class>> GetAllClassesAsync();
+        Task<Class> GetClassByIdAsync(string maPhongHoc);
+        Task AddClassAsync(Class classEntity);
+        Task UpdateClassAsync(Class classEntity);
+        Task DeleteClassAsync(string maPhongHoc);
+    }
+}
+/*namespace DACS.Repositories
 {
     public interface IClassRepository
     {
@@ -12,5 +23,6 @@ namespace DACS.Repositories
         Task UpdateAsync(Class @class);
         Task DeleteAsync(string MaPhongHoc);
         Task<IEnumerable<Class>> SearchAsync(string keyword);
+        Task<IEnumerable<Class>> GetByFloorAsync(int Tang);
     }
-}
+}*/

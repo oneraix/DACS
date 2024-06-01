@@ -1,0 +1,33 @@
+﻿@model DACS.Models.Class
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Class Details";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
+
+    <div class="form-group">
+        <label>Mã Phòng Học</label>
+        <p class="form-control-static">@Model.MaPhongHoc</p>
+    </div>
+    <div class="form-group">
+        <label>Số Phòng</label>
+        <p class="form-control-static">@Model.SoPhong</p>
+    </div>
+    <div class="form-group">
+        <label>Tầng</label>
+        <p class="form-control-static">@Model.Tang</p>
+    </div>
+    <div class="form-group">
+        <label>Ghi Chú</label>
+        <p class="form-control-static">@Model.GhiChu</p>
+    </div>
+    <div class="form-group">
+        <label>Loại Phòng</label>
+        <p class="form-control-static">@Model.RoomCategory?.TenLoaiPhong</p>
+    </div>
+    <a asp-action="Edit" asp-route-id="@Model.MaPhongHoc" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,17 +7,82 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Admin\Controllers\**" />
+    <Compile Remove="Views\Class\**" />
+    <Compile Remove="Views\LoanEquipmentTicket\**" />
+    <Compile Remove="Views\LoanEquipment\**" />
+    <Content Remove="Areas\Admin\Controllers\**" />
+    <Content Remove="Views\Class\**" />
+    <Content Remove="Views\LoanEquipmentTicket\**" />
+    <Content Remove="Views\LoanEquipment\**" />
+    <EmbeddedResource Remove="Areas\Admin\Controllers\**" />
+    <EmbeddedResource Remove="Views\Class\**" />
+    <EmbeddedResource Remove="Views\LoanEquipmentTicket\**" />
+    <EmbeddedResource Remove="Views\LoanEquipment\**" />
+    <None Remove="Areas\Admin\Controllers\**" />
+    <None Remove="Views\Class\**" />
+    <None Remove="Views\LoanEquipmentTicket\**" />
+    <None Remove="Views\LoanEquipment\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\ClassController.cs" />
+    <Compile Remove="Controllers\LoanEquipmentController.cs" />
+    <Compile Remove="Controllers\LoanEquipmentTicketController.cs" />
+    <Compile Remove="Models\IssueErrorDetail.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\Admin\Views\Shared\Error.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Areas\Admin\Controllers\ClassController.cs" />
+    <Compile Include="Areas\Admin\Controllers\IssueCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\IssueDetailController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoanEquipmentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoanEquipmentTicketController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoomCategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\GV\Controllers\" />
+    <Folder Include="Areas\GV\Data\" />
+    <Folder Include="Areas\GV\Models\" />
+    <Folder Include="Areas\KTV\Controllers\" />
+    <Folder Include="Areas\KTV\Data\" />
+    <Folder Include="Areas\KTV\Models\" />
+    <Folder Include="Areas\QL\Controllers\" />
+    <Folder Include="Areas\QL\Data\" />
+    <Folder Include="Areas\QL\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\LoanEquipmentTicket\Create.cshtml" />
+    <None Include="Areas\Admin\Views\LoanEquipmentTicket\Delete.cshtml" />
+    <None Include="Areas\Admin\Views\LoanEquipmentTicket\Details.cshtml" />
+    <None Include="Areas\Admin\Views\LoanEquipmentTicket\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\LoanEquipmentTicket\Index.cshtml" />
   </ItemGroup>
 
 </Project>

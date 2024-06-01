@@ -1,0 +1,25 @@
+﻿@model DACS.Models.IssueDetail
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Edit Issue Detail";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
+
+    <form asp-action="Edit" method="post">
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueCategoryId" class="control-label"></label>
+            <select asp-for="IssueCategoryId" class="form-control" asp-items="ViewBag.IssueCategoryId"></select>
+            <span asp-validation-for="IssueCategoryId" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,31 @@
+﻿@model DACS.Models.LoanEquipment
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Delete Loan Equipment";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
+
+    <h3>Are you sure you want to delete this?</h3>
+
+    <div class="form-group">
+        <label>Mã Thiết Bị Mượn</label>
+        <p class="form-control-static">@Model.MaThietBiMuon</p>
+    </div>
+    <div class="form-group">
+        <label>Tên Thiết Bị Mượn</label>
+        <p class="form-control-static">@Model.TenThietBiMuon</p>
+    </div>
+    <div class="form-group">
+        <label>Số Lượng</label>
+        <p class="form-control-static">@Model.SoLuong</p>
+    </div>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="MaThietBiMuon" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>

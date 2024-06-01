@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DACS.Models.Class>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Danh sách phòng học";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
+    <div class="mb-3">
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+        <a asp-action="Index" asp-controller="RoomCategories" class="btn btn-info ml-2">View Room Categories</a>
+    </div>
+    <div class="mb-3">
+        <form asp-action="Index" method="get">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="floor">Chọn tầng:</label>
+                    <select name="tang" class="form-control" onchange="this.form.submit()">
+                        <option value="">Tất cả tầng</option>
+                        @for (int i = 1; i <= 13; i++)
+                        {
+                            bool isSelected = ViewBag.SelectedFloor == i;
+                            <option value="@i" selected="@(ViewBag.SelectedFloor == i ? "selected" : null)">Tầng @i</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Mã Phòng Học</th>
+                <th>Số Phòng</th>
+                <th>Tầng</th>
+                <th>Ghi Chú</th>
+                <th>Loại Phòng</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaPhongHoc</td>
+                    <td>@item.SoPhong</td>
+                    <td>@item.Tang</td>
+                    <td>@item.GhiChu</td>
+                    <td>@item.RoomCategory?.TenLoaiPhong</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.MaPhongHoc" class="btn btn-sm btn-primary">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.MaPhongHoc" class="btn btn-sm btn-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.MaPhongHoc" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

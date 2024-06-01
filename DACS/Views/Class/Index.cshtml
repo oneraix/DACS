@@ -1,53 +1,65 @@
 ﻿@model IEnumerable<DACS.Models.Class>
 
+
 @{
     ViewData["Title"] = "Index";
+    Layout = "_Layout";
 }
 
-<h1>Index</h1>
+<style>
+    .class-box {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ccc;
+        display: inline-block;
+        margin: 10px;
+        text-align: center;
+        line-height: 100px;
+        color: black
+    }
 
-<p>
+    .Dangsudung {
+        background-color: #b0f5c0; /* Màu xanh lá phòng đang sử dụng */
+    }
+
+    .Trong {
+        background-color: #c0c1c4; /* Không màu phòng trống */
+    }
+
+    .Suachua {
+        background-color: #faa593; /* Màu đỏ phòng đang sửa chữa */
+    }
+</style>
+
+
+<h1>Danh sách phòng học</h1>
+
+
+<div>
     <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SoPhong)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tang)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TrangThai)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GhiChu)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoPhong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TrangThai)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GhiChu)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MaPhongHoc">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MaPhongHoc">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MaPhongHoc">Delete</a>
-            </td>
-        </tr>
+</div>
+
+<div>
+    <form asp-action="Index" method="get">
+        <label for="floor">Chọn tầng:</label>
+        <select name="tang" onchange="this.form.submit()">
+            <option value="">Tất cả tầng</option>
+            @for (int i = 1; i <= 13; i++)
+            {
+                bool isSelected = ViewBag.SelectedFloor == i;
+                <option value="@i" selected="@(ViewBag.SelectedFloor == i ? "selected" : null)">Tầng @i</option>
+            }
+        </select>
+    </form>
+</div>
+
+
+
+@foreach (var item in Model)
+{
+    <div class="class-box @(item.TrangThai == DACS.Models.ClassStatus.Dangsudung ? "Dangsudung" :
+                              item.TrangThai == DACS.Models.ClassStatus.Trong ? "Trong" :
+                              item.TrangThai == DACS.Models.ClassStatus.Suachua ? "Suachua" : "")">
+        @item.MaPhongHoc
+    </div>
 }
-    </tbody>
-</table>

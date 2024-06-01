@@ -1,7 +1,6 @@
 ﻿using DACS.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DACS.Repositories
@@ -15,43 +14,37 @@ namespace DACS.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Class>> GetAllAsync()
+        public async Task<IEnumerable<Class>> GetAllClassesAsync()
         {
-            return await _context.Classes.ToListAsync();
+            return await _context.Classes.Include(c => c.RoomCategory).ToListAsync();
         }
 
-        public async Task<Class> GetByIdAsync(string MaPhongHoc)
+        public async Task<Class> GetClassByIdAsync(string maPhongHoc)
         {
-            return await _context.Classes.FirstOrDefaultAsync(p => p.MaPhongHoc == MaPhongHoc);
+            return await _context.Classes.Include(c => c.RoomCategory)
+                                         .FirstOrDefaultAsync(c => c.MaPhongHoc == maPhongHoc);
         }
 
-        public async Task AddAsync(Class @class)
+        public async Task AddClassAsync(Class classEntity)
         {
-            _context.Classes.Add(@class);
+            _context.Classes.Add(classEntity);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Class @class)
+        public async Task UpdateClassAsync(Class classEntity)
         {
-            _context.Classes.Update(@class);
+            _context.Entry(classEntity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(string MaPhongHoc)
+        public async Task DeleteClassAsync(string maPhongHoc)
         {
-            var classToRemove = await _context.Classes.FindAsync(MaPhongHoc);
-            if (classToRemove != null)
+            var classEntity = await _context.Classes.FindAsync(maPhongHoc);
+            if (classEntity != null)
             {
-                _context.Classes.Remove(classToRemove);
+                _context.Classes.Remove(classEntity);
                 await _context.SaveChangesAsync();
             }
-        }
-
-        public async Task<IEnumerable<Class>> SearchAsync(string keyword)
-        {
-            return await _context.Classes
-                .Where(p => p.MaPhongHoc.Contains(keyword) || p.GhiChu.Contains(keyword))
-                .ToListAsync();
         }
     }
 }
