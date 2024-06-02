@@ -5,32 +5,102 @@
     ViewData["Title"] = "Danh sách loại phòng";
 }
 
-<div class="container mt-5">
-    <h1 class="mb-4">@ViewData["Title"]</h1>
-    <div class="mb-3">
-        <a asp-action="Create" class="btn btn-primary">Create New</a>
-    </div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Mã Loại Phòng</th>
-                <th>Tên Loại Phòng</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.MaLoaiPhong</td>
-                    <td>@item.TenLoaiPhong</td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.MaLoaiPhong" class="btn btn-sm btn-primary">Edit</a>
-                        <a asp-action="Details" asp-route-id="@item.MaLoaiPhong" class="btn btn-sm btn-info">Details</a>
-                        <a asp-action="Delete" asp-route-id="@item.MaLoaiPhong" class="btn btn-sm btn-danger">Delete</a>
-                    </td>
-                </tr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        /* Thay đổi màu nền và màu chữ của tiêu đề */
+        .text-primary {
+            color: #007bff;
+        }
+
+        .text-secondary {
+            color: #6c757d;
+        }
+
+        /* Đổi màu nền và màu chữ của tiêu đề bảng */
+        .table thead th {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        /* Đổi màu chữ của các ô trong bảng */
+        .table tbody td {
+            color: #495057;
+        }
+
+        /* Đổi màu chữ của các nút */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: #fff;
+        }
+
+            /* Đổi màu chữ khi di chuột qua các nút */
+            .btn-primary:hover,
+            .btn-info:hover,
+            .btn-danger:hover,
+            .btn-success:hover {
+                color: #fff;
             }
-        </tbody>
-    </table>
-</div>
+
+        /* Style for the title */
+        .title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 title text-primary">@ViewData["Title"]</h1>
+        <div class="mb-3 d-flex justify-content-end align-items-center">
+            <a asp-action="Create" class="btn btn-success">Tạo mới loại phòng</a>
+        </div>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th class="text-center text-primary">Mã Loại Phòng</th>
+                    <th class="text-center text-primary">Tên Loại Phòng</th>
+                    <th class="text-center text-primary">Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">@item.MaLoaiPhong</td>
+                        <td class="text-center">@item.TenLoaiPhong</td>
+                        <td class="text-center">
+                            <a asp-action="Edit" asp-route-id="@item.MaLoaiPhong" class="btn btn-sm btn-primary">Sửa</a>
+                            <a asp-action="Delete" asp-route-id="@item.MaLoaiPhong" class="btn btn-sm btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

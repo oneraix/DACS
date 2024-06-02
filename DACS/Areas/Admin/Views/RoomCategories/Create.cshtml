@@ -2,24 +2,89 @@
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    ViewData["Title"] = "Create New Room Category";
+    ViewData["Title"] = "Tạo Mới Loại Phòng";
 }
 
-<div class="container mt-5">
-    <h1 class="mb-4">@ViewData["Title"]</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        .text-primary {
+            color: #007bff;
+        }
 
-    <form asp-action="Create" method="post">
-        <div class="form-group">
-            <label asp-for="MaLoaiPhong"></label>
-            <input asp-for="MaLoaiPhong" class="form-control" />
-            <span asp-validation-for="MaLoaiPhong" class="text-danger"></span>
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            max-width: 500px;
+        }
+
+        .form-header {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #343a40;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.1em;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.1em;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-primary text-center">@ViewData["Title"]</h1>
+
+        <div class="form-container">
+            <div class="form-header">
+                Thêm Loại Phòng Mới
+            </div>
+
+            <form asp-action="Create" method="post">
+                <div class="form-group">
+                    <label asp-for="MaLoaiPhong">Mã Loại Phòng</label>
+                    <input asp-for="MaLoaiPhong" class="form-control" />
+                    <span asp-validation-for="MaLoaiPhong" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TenLoaiPhong">Tên Loại Phòng</label>
+                    <input asp-for="TenLoaiPhong" class="form-control" />
+                    <span asp-validation-for="TenLoaiPhong" class="text-danger"></span>
+                </div>
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Quay lại danh sách</a>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label asp-for="TenLoaiPhong"></label>
-            <input asp-for="TenLoaiPhong" class="form-control" />
-            <span asp-validation-for="TenLoaiPhong" class="text-danger"></span>
-        </div>
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-    </form>
-</div>
+    </div>
+</body>
+</html>

@@ -2,26 +2,88 @@
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    ViewData["Title"] = "Delete Issue Detail";
+    ViewData["Title"] = "Xóa Chi Tiết Vấn Đề";
 }
 
-<div class="container mt-5">
-    <h1 class="mb-4">@ViewData["Title"]</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        .text-primary {
+            color: #6f42c1;
+        }
 
-    <h3>Are you sure you want to delete this?</h3>
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
 
-    <div class="form-group">
-        <label>Description</label>
-        <p class="form-control-static">@Model.Description</p>
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+            .btn-primary:hover,
+            .btn-secondary:hover,
+            .btn-danger:hover {
+                color: #fff;
+            }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #6f42c1;
+        }
+
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #343a40;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 title">@ViewData["Title"]</h1>
+
+        <h3>Bạn có chắc chắn muốn xóa chi tiết vấn đề này?</h3>
+
+        <div class="form-container">
+            <div class="form-group">
+                <label>Mô tả</label>
+                <p class="form-control-static">@Model.Description</p>
+            </div>
+            <div class="form-group">
+                <label>Loại vấn đề</label>
+                <p class="form-control-static">@Model.IssueCategory.IssueCategoryName</p>
+            </div>
+
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger">Xóa</button>
+                <a asp-action="Index" class="btn btn-secondary ml-2">Quay lại danh sách</a>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Category</label>
-        <p class="form-control-static">@Model.IssueCategory.IssueCategoryName</p>
-    </div>
-
-    <form asp-action="Delete" method="post">
-        <input type="hidden" asp-for="Id" />
-        <button type="submit" class="btn btn-danger">Delete</button>
-        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-    </form>
-</div>
+</body>
+</html>

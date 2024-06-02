@@ -2,36 +2,119 @@
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    ViewData["Title"] = "Issue Details";
+    ViewData["Title"] = "Chi tiết vấn đề";
 }
 
-<div class="container mt-5">
-    <h1 class="mb-4">@ViewData["Title"]</h1>
-    <p>
-        <a asp-action="Create" class="btn btn-primary">Create New</a>
-        <a asp-action="Index" asp-controller="IssueCategory" class="btn btn-info ml-2">View Issue Categories</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>@Html.DisplayNameFor(model => model.Description)</th>
-                <th>@Html.DisplayNameFor(model => model.IssueCategory.IssueCategoryName)</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
-                    <td>@Html.DisplayFor(modelItem => item.IssueCategory.IssueCategoryName)</td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
-                    </td>
-                </tr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        .text-primary {
+            color: #6f42c1;
+        }
+
+        .text-secondary {
+            color: #6c757d;
+        }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        .table tbody td {
+            color: #495057;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #212529;
+        }
+
+            .btn-primary:hover,
+            .btn-info:hover,
+            .btn-danger:hover,
+            .btn-warning:hover {
+                color: #fff;
             }
-        </tbody>
-    </table>
-</div>
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #6f42c1;
+        }
+
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="title mb-4">@ViewData["Title"]</h1>
+
+        <div class="form-container">
+            <p>
+                <a asp-action="Create" class="btn btn-success">Tạo mới</a>
+                <a asp-action="Index" asp-controller="IssueCategory" class="btn btn-info ml-2">Xem loại vấn đề</a>
+            </p>
+        </div>
+
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Mô tả</th>
+                    <th>Loại vấn đề</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.IssueCategory.IssueCategoryName)</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Sửa</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Chi tiết</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

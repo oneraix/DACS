@@ -1,5 +1,4 @@
-﻿
-using DACS.Models;
+﻿using DACS.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -20,7 +19,7 @@ namespace DACS.Repositories
             return await _context.IssueCategories.ToListAsync();
         }
 
-        public async Task<IssueCategory> GetByIdAsync(string id)
+        public async Task<IssueCategory> GetByIdAsync(int id)
         {
             return await _context.IssueCategories.FindAsync(id);
         }
@@ -34,12 +33,12 @@ namespace DACS.Repositories
 
         public async Task<IssueCategory> UpdateAsync(IssueCategory category)
         {
-            _context.IssueCategories.Update(category);
+            _context.Entry(category).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return category;
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(int id)
         {
             var category = await _context.IssueCategories.FindAsync(id);
             if (category != null)

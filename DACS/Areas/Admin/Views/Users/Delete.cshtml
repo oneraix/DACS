@@ -2,29 +2,116 @@
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    ViewData["Title"] = "Delete Account";
+    ViewData["Title"] = "Xóa tài khoản";
 }
 
-<div class="container mt-5">
-    <h1 class="mb-4">@ViewData["Title"]</h1>
-    <h3>Are you sure you want to delete this account?</h3>
-    <div class="card">
-        <div class="card-body">
-            <dl class="row">
-                <dt class="col-sm-4">Email:</dt>
-                <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
-                <dt class="col-sm-4">Full Name:</dt>
-                <dd class="col-sm-8">@Html.DisplayFor(model => model.FullName)</dd>
-                <dt class="col-sm-4">Phone Number:</dt>
-                <dd class="col-sm-8">@Html.DisplayFor(model => model.PhoneNumber)</dd>
-                <dt class="col-sm-4">Employee ID:</dt>
-                <dd class="col-sm-8">@Html.DisplayFor(model => model.MaNhanVien)</dd>
-            </dl>
-            <form asp-action="Delete">
-                <input type="hidden" asp-for="Id" />
-                <input type="submit" value="Delete" class="btn btn-danger" />
-                <a asp-action="Index" class="btn btn-secondary ml-2">Back to List</a>
-            </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light grey background */
+        }
+
+        .text-primary {
+            color: #6f42c1; /* Purple color */
+        }
+
+        .text-secondary {
+            color: #6c757d;
+        }
+
+        .card {
+            max-width: 600px;
+            margin: 0 auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card:hover {
+                transform: scale(1.03);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+        .card-header {
+            font-size: 16px;
+            background-color: #6f42c1; /* Purple color */
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .card-body {
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #6f42c1; /* Purple color */
+            border-color: #6f42c1;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+            .btn-primary:hover,
+            .btn-secondary:hover,
+            .btn-danger:hover {
+                color: #fff;
+            }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #6f42c1; /* Purple color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="title text-primary">@ViewData["Title"]</h1>
+        <h3 class="text-center mb-4">Bạn có chắc chắn muốn xóa tài khoản này không?</h3>
+        <div class="card">
+            <div class="card-header">Chi tiết tài khoản</div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Email:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+                    <dt class="col-sm-4">Tên đầy đủ:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.FullName)</dd>
+                    <dt class="col-sm-4">Số điện thoại:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.PhoneNumber)</dd>
+                    <dt class="col-sm-4">Mã nhân viên:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.MaNhanVien)</dd>
+                </dl>
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="btn-container d-flex justify-content-between">
+                        <input type="submit" value="Xóa" class="btn btn-danger" />
+                        <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</body>
+</html>

@@ -24,7 +24,7 @@ namespace DACS.Controllers
         }
 
         // GET: IssueCategory/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int id)
         {
             var category = await _issueCategoryRepository.GetByIdAsync(id);
             if (category == null)
@@ -43,7 +43,7 @@ namespace DACS.Controllers
         // POST: IssueCategory/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IssueCategoryId,IssueCategoryName")] IssueCategory category)
+        public async Task<IActionResult> Create([Bind("IssueCategoryName")] IssueCategory category)
         {
             if (ModelState.IsValid)
             {
@@ -54,7 +54,7 @@ namespace DACS.Controllers
         }
 
         // GET: IssueCategory/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int id)
         {
             var category = await _issueCategoryRepository.GetByIdAsync(id);
             if (category == null)
@@ -67,7 +67,7 @@ namespace DACS.Controllers
         // POST: IssueCategory/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("IssueCategoryId,IssueCategoryName")] IssueCategory category)
+        public async Task<IActionResult> Edit(int id, [Bind("IssueCategoryId,IssueCategoryName")] IssueCategory category)
         {
             if (id != category.IssueCategoryId)
             {
@@ -83,7 +83,7 @@ namespace DACS.Controllers
         }
 
         // GET: IssueCategory/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int id)
         {
             var category = await _issueCategoryRepository.GetByIdAsync(id);
             if (category == null)
@@ -96,7 +96,7 @@ namespace DACS.Controllers
         // POST: IssueCategory/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _issueCategoryRepository.DeleteAsync(id);
             return RedirectToAction(nameof(Index));

@@ -122,8 +122,11 @@ namespace DACS.Migrations
 
             modelBuilder.Entity("DACS.Models.IssueCategory", b =>
                 {
-                    b.Property<string>("IssueCategoryId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("IssueCategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IssueCategoryId"));
 
                     b.Property<string>("IssueCategoryName")
                         .IsRequired()
@@ -146,9 +149,8 @@ namespace DACS.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IssueCategoryId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("IssueCategoryId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -228,6 +230,83 @@ namespace DACS.Migrations
                     b.HasKey("MaLoaiPhong");
 
                     b.ToTable("RoomCategories");
+                });
+
+            modelBuilder.Entity("DACS.Models.RoomSchedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("GiangVien")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MonHoc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Ngay")
+                        .HasColumnType("date");
+
+                    b.Property<string>("PhongHoc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<TimeSpan>("ThoiGianBatDau")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan>("ThoiGianKetThuc")
+                        .HasColumnType("time");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RoomSchedules");
+                });
+
+            modelBuilder.Entity("DACS.Models.SupportRequest", b =>
+                {
+                    b.Property<int>("RequestId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RequestId"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsResolved")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("IssueCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IssueDetailId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MaPhongHoc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("ReportDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("RequestId");
+
+                    b.HasIndex("IssueCategoryId");
+
+                    b.HasIndex("IssueDetailId");
+
+                    b.HasIndex("MaPhongHoc");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("SupportRequests");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -402,6 +481,41 @@ namespace DACS.Migrations
                     b.Navigation("Class");
 
                     b.Navigation("LoanEquipment");
+                });
+
+            modelBuilder.Entity("DACS.Models.SupportRequest", b =>
+                {
+                    b.HasOne("DACS.Models.IssueCategory", "IssueCategory")
+                        .WithMany()
+                        .HasForeignKey("IssueCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DACS.Models.IssueDetail", "IssueDetail")
+                        .WithMany()
+                        .HasForeignKey("IssueDetailId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DACS.Models.Class", "Class")
+                        .WithMany()
+                        .HasForeignKey("MaPhongHoc")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DACS.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Class");
+
+                    b.Navigation("IssueCategory");
+
+                    b.Navigation("IssueDetail");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

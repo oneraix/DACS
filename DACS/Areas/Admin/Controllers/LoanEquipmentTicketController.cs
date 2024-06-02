@@ -16,18 +16,32 @@ namespace DACS.Controllers
         private readonly ILoanTicketRepository _loanTicketRepository;
         private readonly ApplicationDbContext _context;
 
-        public LoanEquipmentTicketController(ApplicationDbContext context, ILoanTicketRepository loanTicketRepository)
+        public LoanEquipmentTicketController(ILoanTicketRepository loanEquipmentTicketRepository, ApplicationDbContext context)
         {
+            _loanTicketRepository = loanEquipmentTicketRepository;
             _context = context;
-            _loanTicketRepository = loanTicketRepository;
         }
 
-        // GET: LoanEquipmentTicket
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchDevice, DateTime? searchDate)
         {
-            var tickets = await _loanTicketRepository.GetAllTicketsAsync();
-            return View(tickets);
+            var tickets = _context.LoanEquipmentTickets.Include(t => t.Class).Include(t => t.LoanEquipment).AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchDevice))
+            {
+                tickets = tickets.Where(t => t.LoanEquipment.TenThietBiMuon.Contains(searchDevice));
+            }
+
+            if (searchDate.HasValue)
+            {
+                tickets = tickets.Where(t => t.NgayMuon.Date == searchDate.Value.Date);
+            }
+
+            ViewBag.SearchDevice = searchDevice;
+            ViewBag.SearchDate = searchDate?.ToString("yyyy-MM-dd");
+
+            return View(await tickets.ToListAsync());
         }
+
 
         // GET: LoanEquipmentTicket/Details/5
         public async Task<IActionResult> Details(int id)

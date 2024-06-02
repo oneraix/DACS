@@ -2,24 +2,101 @@
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    ViewData["Title"] = "Edit Issue Detail";
+    ViewData["Title"] = "Chỉnh sửa Chi Tiết Vấn Đề";
 }
 
-<div class="container mt-5">
-    <h1 class="mb-4">@ViewData["Title"]</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        .text-primary {
+            color: #6f42c1;
+        }
 
-    <form asp-action="Edit" method="post">
-        <div class="form-group">
-            <label asp-for="Description" class="control-label"></label>
-            <input asp-for="Description" class="form-control" />
-            <span asp-validation-for="Description" class="text-danger"></span>
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+            .btn-primary:hover,
+            .btn-secondary:hover,
+            .btn-danger:hover {
+                color: #fff;
+            }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #6f42c1;
+        }
+
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .form-group input,
+        .form-group select {
+            border-radius: 5px;
+        }
+
+        .form-group span {
+            font-size: 0.875em;
+        }
+
+        .btn-container {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 title">@ViewData["Title"]</h1>
+
+        <div class="form-container">
+            <form asp-action="Edit" method="post">
+                <div class="form-group">
+                    <label asp-for="Description" class="text-primary">Mô tả</label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IssueCategoryId" class="text-primary">Loại vấn đề</label>
+                    <select asp-for="IssueCategoryId" class="form-control" asp-items="ViewBag.IssueCategoryId"></select>
+                    <span asp-validation-for="IssueCategoryId" class="text-danger"></span>
+                </div>
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-success">Lưu</button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Quay lại danh sách</a>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label asp-for="IssueCategoryId" class="control-label"></label>
-            <select asp-for="IssueCategoryId" class="form-control" asp-items="ViewBag.IssueCategoryId"></select>
-            <span asp-validation-for="IssueCategoryId" class="text-danger"></span>
-        </div>
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-    </form>
-</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<DACS.Models.RoomSchedule>
+
+@{
+    ViewData["Title"] = "Lịch Sử Dụng Phòng";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">@ViewData["Title"]</h1>
+        <a asp-action="Create" class="btn btn-success">Tạo lịch sử dụng phòng</a>
+    </div>
+
+    <div class="mb-4">
+        <form method="get" asp-action="Index">
+            <div class="form-row">
+                <div class="col-md-3 mb-3">
+                    <input type="date" name="selectedDate" class="form-control" value="@ViewBag.SelectedDate" />
+                </div>
+                <div class="col-md-3 mb-3">
+                    @Html.DropDownList("selectedCa", (SelectList)ViewBag.SelectedCa, "Chọn ca", new { @class = "form-control" })
+                </div>
+                <div class="col-md-3 mb-3">
+                    <button type="submit" class="btn btn-primary">Lọc</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="mb-4">
+        <form asp-action="Upload" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Chọn file Excel</label>
+                <input type="file" class="form-control" id="file" name="file" />
+            </div>
+            <button type="submit" class="btn btn-primary">Tải Lên</button>
+        </form>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>Tên người dùng phòng</th>
+                <th>Mã phòng</th>
+                <th>Ngày học</th>
+                <th>Thời gian bắt đầu</th>
+                <th>Thời gian kết thúc</th>
+                <th>Tên môn học</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.GiangVien</td>
+                    <td>@item.PhongHoc</td>
+                    <td>@item.Ngay.ToString("dd-MM-yyyy")</td>
+                    <td>@item.ThoiGianBatDau</td>
+                    <td>@item.ThoiGianKetThuc</td>
+                    <td>@item.MonHoc</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Chi Tiết</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

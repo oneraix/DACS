@@ -53,6 +53,19 @@ namespace DACS.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "IssueCategories",
+                columns: table => new
+                {
+                    IssueCategoryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IssueCategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IssueCategories", x => x.IssueCategoryId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "LoanEquipments",
                 columns: table => new
                 {
@@ -184,6 +197,26 @@ namespace DACS.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "IssueDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IssueCategoryId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IssueDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_IssueDetails_IssueCategories_IssueCategoryId",
+                        column: x => x.IssueCategoryId,
+                        principalTable: "IssueCategories",
+                        principalColumn: "IssueCategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Classes",
                 columns: table => new
                 {
@@ -235,6 +268,49 @@ namespace DACS.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "SupportRequests",
+                columns: table => new
+                {
+                    RequestId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReportDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsResolved = table.Column<bool>(type: "bit", nullable: false),
+                    MaPhongHoc = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IssueCategoryId = table.Column<int>(type: "int", nullable: false),
+                    IssueDetailId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SupportRequests", x => x.RequestId);
+                    table.ForeignKey(
+                        name: "FK_SupportRequests_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_SupportRequests_Classes_MaPhongHoc",
+                        column: x => x.MaPhongHoc,
+                        principalTable: "Classes",
+                        principalColumn: "MaPhongHoc",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_SupportRequests_IssueCategories_IssueCategoryId",
+                        column: x => x.IssueCategoryId,
+                        principalTable: "IssueCategories",
+                        principalColumn: "IssueCategoryId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_SupportRequests_IssueDetails_IssueDetailId",
+                        column: x => x.IssueDetailId,
+                        principalTable: "IssueDetails",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -280,6 +356,11 @@ namespace DACS.Migrations
                 column: "MaLoaiPhong");
 
             migrationBuilder.CreateIndex(
+                name: "IX_IssueDetails_IssueCategoryId",
+                table: "IssueDetails",
+                column: "IssueCategoryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_LoanEquipmentTickets_MaPhongHoc",
                 table: "LoanEquipmentTickets",
                 column: "MaPhongHoc");
@@ -288,6 +369,26 @@ namespace DACS.Migrations
                 name: "IX_LoanEquipmentTickets_MaThietBiMuon",
                 table: "LoanEquipmentTickets",
                 column: "MaThietBiMuon");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SupportRequests_IssueCategoryId",
+                table: "SupportRequests",
+                column: "IssueCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SupportRequests_IssueDetailId",
+                table: "SupportRequests",
+                column: "IssueDetailId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SupportRequests_MaPhongHoc",
+                table: "SupportRequests",
+                column: "MaPhongHoc");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SupportRequests_UserId",
+                table: "SupportRequests",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -312,7 +413,13 @@ namespace DACS.Migrations
                 name: "LoanEquipmentTickets");
 
             migrationBuilder.DropTable(
+                name: "SupportRequests");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "LoanEquipments");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
@@ -321,10 +428,13 @@ namespace DACS.Migrations
                 name: "Classes");
 
             migrationBuilder.DropTable(
-                name: "LoanEquipments");
+                name: "IssueDetails");
 
             migrationBuilder.DropTable(
                 name: "RoomCategories");
+
+            migrationBuilder.DropTable(
+                name: "IssueCategories");
         }
     }
 }

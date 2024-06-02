@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DACS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240528000515_Initial")]
+    [Migration("20240601185407_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -123,6 +123,45 @@ namespace DACS.Migrations
                     b.ToTable("Classes");
                 });
 
+            modelBuilder.Entity("DACS.Models.IssueCategory", b =>
+                {
+                    b.Property<int>("IssueCategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IssueCategoryId"));
+
+                    b.Property<string>("IssueCategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IssueCategoryId");
+
+                    b.ToTable("IssueCategories");
+                });
+
+            modelBuilder.Entity("DACS.Models.IssueDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IssueCategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IssueCategoryId");
+
+                    b.ToTable("IssueDetails");
+                });
+
             modelBuilder.Entity("DACS.Models.LoanEquipment", b =>
                 {
                     b.Property<string>("MaThietBiMuon")
@@ -194,6 +233,51 @@ namespace DACS.Migrations
                     b.HasKey("MaLoaiPhong");
 
                     b.ToTable("RoomCategories");
+                });
+
+            modelBuilder.Entity("DACS.Models.SupportRequest", b =>
+                {
+                    b.Property<int>("RequestId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RequestId"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsResolved")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("IssueCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IssueDetailId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MaPhongHoc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("ReportDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("RequestId");
+
+                    b.HasIndex("IssueCategoryId");
+
+                    b.HasIndex("IssueDetailId");
+
+                    b.HasIndex("MaPhongHoc");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("SupportRequests");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -340,6 +424,17 @@ namespace DACS.Migrations
                     b.Navigation("RoomCategory");
                 });
 
+            modelBuilder.Entity("DACS.Models.IssueDetail", b =>
+                {
+                    b.HasOne("DACS.Models.IssueCategory", "IssueCategory")
+                        .WithMany("IssueDetails")
+                        .HasForeignKey("IssueCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("IssueCategory");
+                });
+
             modelBuilder.Entity("DACS.Models.LoanEquipmentTicket", b =>
                 {
                     b.HasOne("DACS.Models.Class", "Class")
@@ -357,6 +452,41 @@ namespace DACS.Migrations
                     b.Navigation("Class");
 
                     b.Navigation("LoanEquipment");
+                });
+
+            modelBuilder.Entity("DACS.Models.SupportRequest", b =>
+                {
+                    b.HasOne("DACS.Models.IssueCategory", "IssueCategory")
+                        .WithMany()
+                        .HasForeignKey("IssueCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DACS.Models.IssueDetail", "IssueDetail")
+                        .WithMany()
+                        .HasForeignKey("IssueDetailId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DACS.Models.Class", "Class")
+                        .WithMany()
+                        .HasForeignKey("MaPhongHoc")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DACS.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Class");
+
+                    b.Navigation("IssueCategory");
+
+                    b.Navigation("IssueDetail");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -408,6 +538,11 @@ namespace DACS.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DACS.Models.IssueCategory", b =>
+                {
+                    b.Navigation("IssueDetails");
                 });
 
             modelBuilder.Entity("DACS.Models.LoanEquipment", b =>

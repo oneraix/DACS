@@ -1,0 +1,152 @@
+﻿@model IEnumerable<DACS.Models.SupportRequest>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Danh sách yêu cầu hỗ trợ";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .text-primary {
+            color: #6f42c1; /* màu tím */
+        }
+
+        .text-secondary {
+            color: #6c757d;
+        }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        .table tbody td {
+            color: #495057;
+        }
+
+        .btn-primary {
+            background-color: #6f42c1; /* màu tím */
+            border-color: #6f42c1; /* màu tím */
+            color: #fff;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: #fff;
+        }
+
+            .btn-primary:hover,
+            .btn-info:hover,
+            .btn-danger:hover,
+            .btn-success:hover {
+                color: #fff;
+            }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="title text-primary">@ViewData["Title"]</h1>
+
+        <div class="form-container">
+            <form asp-action="Index" method="get" class="form-inline">
+                <div class="form-group mr-3">
+                    <input type="text" name="searchTerm" class="form-control" placeholder="Tìm kiếm theo mô tả" value="@ViewBag.SearchTerm" />
+                </div>
+                <div class="form-group mr-3">
+                    <select name="isResolved" class="form-control">
+                        <option value="">Tất cả trạng thái</option>
+                        <option value="true" selected="@((bool?)ViewBag.IsResolved == true ? "selected" : "")">Đã giải quyết</option>
+                        <option value="false" selected="@((bool?)ViewBag.IsResolved == false ? "selected" : "")">Chưa giải quyết</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                <a asp-action="Create" class="btn btn-success ml-auto">Tạo mới</a>
+            </form>
+        </div>
+
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Mô tả</th>
+                    <th>Ngày báo cáo</th>
+                    <th>Trạng thái</th>
+                    <th>Phòng</th>
+                    <th>Loại sự cố</th>
+                    <th>Chi tiết sự cố</th>
+                    <th>Người dùng</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Description</td>
+                        <td>@item.ReportDate</td>
+                        <td>
+                            @if (item.IsResolved)
+                            {
+                                <span class="badge badge-success">Đã giải quyết</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-warning">Chưa giải quyết</span>
+                            }
+                        </td>
+                        <td>@item.Class?.MaPhongHoc</td>
+                        <td>@item.IssueCategory?.IssueCategoryName</td>
+                        <td>@item.IssueDetail?.Description</td>
+                        <td>@item.ApplicationUser?.UserName</td>
+                        <td>
+                            <a href="@Url.Action("Details", "SupportRequest", new { id = item.RequestId })" class="btn btn-outline-primary btn-sm">Chi tiết</a>
+                            <a href="@Url.Action("Edit", "SupportRequest", new { id = item.RequestId })" class="btn btn-outline-secondary btn-sm">Chỉnh sửa</a>
+                            <a href="@Url.Action("Delete", "SupportRequest", new { id = item.RequestId })" class="btn btn-outline-danger btn-sm">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

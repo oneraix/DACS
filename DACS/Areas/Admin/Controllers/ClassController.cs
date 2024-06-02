@@ -14,22 +14,34 @@ namespace DACS.Controllers
     {
         private readonly IClassRepository _classRepository;
         private readonly IRoomCategoriesRepository _roomCategoriesRepository;
+        private readonly ApplicationDbContext _context;
 
-        public ClassController(IClassRepository classRepository, IRoomCategoriesRepository roomCategoriesRepository)
+        public ClassController(IClassRepository classRepository, IRoomCategoriesRepository roomCategoriesRepository, ApplicationDbContext context)
         {
             _classRepository = classRepository;
             _roomCategoriesRepository = roomCategoriesRepository;
+            _context = context;
         }
 
-        public async Task<IActionResult> Index(int? tang)
+        public async Task<IActionResult> Index(int? tang, string maLoaiPhong)
         {
-            var classes = await _classRepository.GetAllClassesAsync();
-            ViewBag.SelectedFloor = tang;
+            var classes = _context.Classes.Include(c => c.RoomCategory).AsQueryable();
+
             if (tang.HasValue)
             {
-                classes = classes.Where(c => c.Tang == tang.Value);
+                classes = classes.Where(c => c.Tang == tang);
             }
-            return View(classes);
+
+            if (!string.IsNullOrEmpty(maLoaiPhong))
+            {
+                classes = classes.Where(c => c.MaLoaiPhong == maLoaiPhong);
+            }
+
+            ViewBag.SelectedFloor = tang;
+            ViewBag.SelectedCategory = maLoaiPhong;
+            ViewBag.RoomCategories = await _context.RoomCategories.ToListAsync();
+
+            return View(await classes.ToListAsync());
         }
 
         public async Task<IActionResult> Create()
@@ -96,22 +108,6 @@ namespace DACS.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewBag.MaLoaiPhong = new SelectList(await _roomCategoriesRepository.GetAllRoomCategoriesAsync(), "MaLoaiPhong", "TenLoaiPhong", classEntity.MaLoaiPhong);
-            return View(classEntity);
-        }
-
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var classEntity = await _classRepository.GetClassByIdAsync(id);
-            if (classEntity == null)
-            {
-                return NotFound();
-            }
-
             return View(classEntity);
         }
 

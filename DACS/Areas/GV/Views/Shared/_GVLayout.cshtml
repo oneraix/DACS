@@ -4,14 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Focus - Bootstrap Admin Dashboard </title>
+    <title>GV Dashboard</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicon.png">
     <link rel="stylesheet" href="~/vendor/owl-carousel/css/owl.carousel.min.css">
     <link rel="stylesheet" href="~/vendor/owl-carousel/css/owl.theme.default.min.css">
     <link href="~/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
     <link href="~/css/style.css" rel="stylesheet">
-
 </head>
 <body>
     <div id="preloader">
@@ -38,7 +37,6 @@
                     <span class="line"></span><span class="line"></span><span class="line"></span>
                 </div>
             </div>
-
         </div>
         <!--Nav header end-->
         <!--Header start-->
@@ -47,17 +45,6 @@
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
-                            @*Thanh tim kiem
-                            <div class="search_bar dropdown">
-                            <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
-                            <i class="mdi mdi-magnify"></i>
-                            </span>
-                            <div class="dropdown-menu p-0 m-0">
-                            <form>
-                            <input class="form-control" type="search" placeholder="search" aria-label="search">
-                            </form>
-                            </div>
-                            </div> *@
                         </div>
 
                         <ul class="navbar-nav header-right">
@@ -104,51 +91,9 @@
                             <i class="icon icon-single-04"></i><span class="nav-text">Tổng quan</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" asp-area="Admin" asp-controller="Class" asp-action="Index" aria-expanded="false">
-                            <i class="icon icon-app-store"></i><span class="nav-text">Phòng học</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" asp-area="Admin" asp-controller="LoanEquipmentTicket" asp-action="Index" aria-expanded="false">
-                            <i class="icon icon-chart-bar-33"></i><span class="nav-text">Thiết bị mượn</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void()" aria-expanded="false">
-                            <i class="icon icon-world-2"></i><span class="nav-text">Trang bị phòng học</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void()" aria-expanded="false">
-                            <i class="icon icon-plug"></i><span class="nav-text">Quản lí tài khoản</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="widget-basic.html" aria-expanded="false">
-                            <i class="icon icon-globe-2"></i><span class="nav-text">Quản lí thông báo sự cố</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void()" aria-expanded="false">
-                            <i class="icon icon-form"></i><span class="nav-text">Nhật kí sửa chữa</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="javascript:void()" aria-expanded="false">
-                            <i class="icon icon-layout-25"></i><span class="nav-text">Table</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="table-bootstrap-basic.html">Bootstrap</a></li>
-                            <li><a href="table-datatable-basic.html">Datatable</a></li>
-                        </ul>
-                    </li>
+                    <!-- Thêm các liên kết khác tùy theo vai trò -->
                 </ul>
             </div>
-
-
         </div>
         <!--Sidebar end-->
         <!--Content body start-->
@@ -159,7 +104,7 @@
         <!--Footer start-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2019</p>
+                <p>Copyright © 2024 </p>
             </div>
         </div>
         @* Render the body of the page *@
@@ -172,18 +117,16 @@
         <script src="~/js/quixnav-init.js"></script>
         <script src="~/js/custom.min.js"></script>
 
-
         <!-- Vectormap -->
         <script src="~/vendor/raphael/raphael.min.js"></script>
         <script src="~/vendor/morris/morris.min.js"></script>
-
 
         <script src="~/vendor/circle-progress/circle-progress.min.js"></script>
         <script src="~/vendor/chart.js/Chart.bundle.min.js"></script>
 
         <script src="~/vendor/gaugeJS/dist/gauge.min.js"></script>
 
-        <!--  flot-chart js -->
+        <!-- flot-chart js -->
         <script src="~/vendor/flot/jquery.flot.js"></script>
         <script src="~/vendor/flot/jquery.flot.resize.js"></script>
 
@@ -195,10 +138,8 @@
         <script src="~/vendor/jqvmap/js/jquery.vmap.usa.js"></script>
         <script src="~/vendor/jquery.counterup/jquery.counterup.min.js"></script>
 
-
         <script src="~/js/dashboard/dashboard-1.js"></script>
+
+        @RenderSection("Scripts", required: false)
 </body>
-
-
-
 </html>

@@ -2,33 +2,109 @@
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    ViewData["Title"] = "Issue Categories";
+    ViewData["Title"] = "Danh sách loại vấn đề";
 }
 
-<div class="container mt-5">
-    <h1 class="mb-4">@ViewData["Title"]</h1>
-    <p>
-        <a asp-action="Create" class="btn btn-primary">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>@Html.DisplayNameFor(model => model.IssueCategoryName)</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.IssueCategoryName)</td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.IssueCategoryId" class="btn btn-sm btn-warning">Edit</a>
-                        <a asp-action="Details" asp-route-id="@item.IssueCategoryId" class="btn btn-sm btn-info">Details</a>
-                        <a asp-action="Delete" asp-route-id="@item.IssueCategoryId" class="btn btn-sm btn-danger">Delete</a>
-                    </td>
-                </tr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .text-primary {
+            color: #007bff;
+        }
+
+        .text-secondary {
+            color: #6c757d;
+        }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        .table tbody td {
+            color: #495057;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #212529;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: #fff;
+        }
+
+            .btn-primary:hover,
+            .btn-warning:hover,
+            .btn-info:hover,
+            .btn-danger:hover,
+            .btn-success:hover {
+                color: #fff;
             }
-        </tbody>
-    </table>
-</div>
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="title text-primary">@ViewData["Title"]</h1>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a asp-action="Create" class="btn btn-success">Tạo mới loại vấn đề</a>
+        </div>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th class="text-center text-primary">@Html.DisplayNameFor(model => model.First().IssueCategoryName)</th>
+                    <th class="text-center text-primary">Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">@Html.DisplayFor(modelItem => item.IssueCategoryName)</td>
+                        <td class="text-center">
+                            <a asp-action="Edit" asp-route-id="@item.IssueCategoryId" class="btn btn-sm btn-warning">Sửa</a>
+                            <a asp-action="Delete" asp-route-id="@item.IssueCategoryId" class="btn btn-sm btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
