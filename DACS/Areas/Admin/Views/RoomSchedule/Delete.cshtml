@@ -1,0 +1,147 @@
+﻿@model DACS.Models.RoomSchedule
+
+@{
+    ViewData["Title"] = "Xóa Lịch Sử Dụng Phòng";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .text-primary {
+            color: #6f42c1;
+        }
+
+        .card {
+            max-width: 800px;
+            margin: 0 auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card:hover {
+                transform: scale(1.03);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+        .card-header {
+            font-size: 16px;
+            background-color: #6f42c1;
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .card-body {
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .form-control-plaintext {
+            padding: 0.375rem 0;
+            margin-bottom: 0;
+        }
+
+        .btn {
+            padding: 0.375rem 0.75rem;
+        }
+
+        .btn-primary {
+            background-color: #6f42c1;
+            border-color: #6f42c1;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+        }
+
+            .btn-primary:hover,
+            .btn-danger:hover,
+            .btn-secondary:hover {
+                color: #fff;
+            }
+    </style>
+</head>
+<body>
+    <h2 class="text-center my-4">@ViewData["Title"]</h2>
+
+    <div class="container mt-5">
+        <div class="card border-info">
+            <div class="card-header bg-info text-white">
+                <h4 class="m-0">Xóa Lịch Sử Dụng Phòng</h4>
+            </div>
+            <div class="card-body">
+                <h3>Bạn có chắc chắn muốn xóa lịch sử dụng phòng này?</h3>
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Tên Người Dùng:</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-plaintext text-secondary">@Model.GiangVien</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Mã Phòng:</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-plaintext text-secondary">@Model.PhongHoc</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Ngày Học:</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-plaintext text-secondary">@Model.Ngay.ToString("dd-MM-yyyy")</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Thời Gian Bắt Đầu:</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-plaintext text-secondary">@Model.ThoiGianBatDau</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Thời Gian Kết Thúc:</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-plaintext text-secondary">@Model.ThoiGianKetThuc</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Tên Môn Học:</label>
+                    <div class="col-sm-9">
+                        <p class="form-control-plaintext text-secondary">@Model.MonHoc</p>
+                    </div>
+                </div>
+                <form asp-action="DeleteConfirmed" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                        <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.btn-danger').addEventListener('click', function (event) {
+            if (!confirm('Bạn có chắc chắn muốn xóa lịch sử dụng phòng này?')) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

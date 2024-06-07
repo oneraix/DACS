@@ -50,6 +50,7 @@ namespace DACS.Models
                 .WithMany()
                 .HasForeignKey(sr => sr.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
         }
 
     }

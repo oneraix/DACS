@@ -39,6 +39,10 @@
 
   <ItemGroup>
     <Content Remove="Areas\Admin\Views\Shared\Error.cshtml" />
+    <Content Remove="Areas\QL\Views\LoanEquipmentTicket\Create.cshtml" />
+    <Content Remove="Areas\QL\Views\LoanEquipmentTicket\Delete.cshtml" />
+    <Content Remove="Areas\QL\Views\LoanEquipmentTicket\Details.cshtml" />
+    <Content Remove="Areas\QL\Views\LoanEquipmentTicket\Edit.cshtml" />
     <Content Remove="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
 
@@ -96,6 +100,10 @@
     <None Include="Areas\Admin\Views\LoanEquipmentTicket\Details.cshtml" />
     <None Include="Areas\Admin\Views\LoanEquipmentTicket\Edit.cshtml" />
     <None Include="Areas\Admin\Views\LoanEquipmentTicket\Index.cshtml" />
+    <None Include="Areas\QL\Views\LoanEquipmentTicket\Create.cshtml" />
+    <None Include="Areas\QL\Views\LoanEquipmentTicket\Delete.cshtml" />
+    <None Include="Areas\QL\Views\LoanEquipmentTicket\Details.cshtml" />
+    <None Include="Areas\QL\Views\LoanEquipmentTicket\Edit.cshtml" />
   </ItemGroup>
 
 </Project>

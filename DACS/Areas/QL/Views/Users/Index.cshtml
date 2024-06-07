@@ -1,0 +1,140 @@
+﻿@model IEnumerable<DACS.Models.ApplicationUser>
+
+@{
+    Layout = "~/Areas/QL/Views/Shared/_QLLayout.cshtml";
+    ViewData["Title"] = "Danh sách tài khoản";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .text-primary {
+            color: #6f42c1; /* màu tím */
+        }
+
+        .text-secondary {
+            color: #6c757d;
+        }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        .table tbody td {
+            color: #495057;
+        }
+
+        .btn-primary {
+            background-color: #6f42c1; /* màu tím */
+            border-color: #6f42c1; /* màu tím */
+            color: #fff;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: #fff;
+        }
+
+            .btn-primary:hover,
+            .btn-info:hover,
+            .btn-danger:hover,
+            .btn-success:hover {
+                color: #fff;
+            }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="title text-primary">@ViewData["Title"]</h1>
+
+        <div class="form-container">
+            <form asp-action="Index" method="get" class="form-inline">
+                <div class="form-group mr-3">
+                    <input type="text" name="searchTerm" class="form-control" placeholder="Tìm kiếm theo email, tên, số điện thoại, hoặc mã nhân viên" value="@ViewBag.SearchTerm" />
+                </div>
+                <div class="form-group mr-3">
+                    <select name="roleName" class="form-control">
+                        <option value="">Tất cả vai trò</option>
+                        @foreach (var role in ViewBag.Roles)
+                        {
+                            var isSelected = role.Name == ViewBag.SelectedRole ? "selected" : "";
+                            <option value="@role.Name" selected="@isSelected">@role.Name</option>
+                        }
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                <a asp-action="Create" class="btn btn-success ml-auto">Tạo mới</a>
+            </form>
+        </div>
+
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Email</th>
+                    <th>Tên đầy đủ</th>
+                    <th>Số điện thoại</th>
+                    <th>Mã nhân viên</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Email</td>
+                        <td>@item.FullName</td>
+                        <td>@item.PhoneNumber</td>
+                        <td>@item.MaNhanVien</td>
+                        <td>
+                            <a href="@Url.Action("Details", "Users", new { area = "QL", id = item.Id })" class="btn btn-outline-primary btn-sm">Chi tiết</a>
+                            <a href="@Url.Action("Edit", "Users", new { area = "QL", id = item.Id })" class="btn btn-outline-secondary btn-sm">Chỉnh sửa</a>
+                            <a href="@Url.Action("Delete", "Users", new { area = "QL", id = item.Id })" class="btn btn-outline-danger btn-sm">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

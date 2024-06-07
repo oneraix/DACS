@@ -1,8 +1,8 @@
 ﻿@model DACS.Models.RoomSchedule
 
 @{
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    ViewData["Title"] = "Tạo Lịch Sử Dụng Phòng";
+    Layout = "~/Areas/QL/Views/Shared/_QLLayout.cshtml";
+    ViewData["Title"] = "Chỉnh Sửa Lịch Sử Dụng Phòng";
 }
 
 <!DOCTYPE html>
@@ -70,10 +70,10 @@
 <body>
     <div class="container mt-5">
         <div class="card">
-            <div class="card-header">Tạo Lịch Sử Dụng Phòng</div>
+            <div class="card-header">Chỉnh Sửa Lịch Sử Dụng Phòng</div>
             <div class="card-body">
                 <h2 class="text-center mb-4">@ViewData["Title"]</h2>
-                <form asp-action="Create" method="post">
+                <form asp-action="Edit" method="post">
                     <div asp-validation-summary="All" class="text-danger"></div>
 
                     <div class="form-group">
@@ -90,7 +90,7 @@
 
                     <div class="form-group">
                         <label asp-for="Ngay">Ngày Học</label>
-                        <input asp-for="Ngay" type="date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                        <input asp-for="Ngay" type="date" class="form-control" />
                         <span asp-validation-for="Ngay" class="text-danger"></span>
                     </div>
 
@@ -100,7 +100,7 @@
                         <span asp-validation-for="ThoiGianBatDau" class="text-danger"></span>
                     </div>
 
-                    <div class="form-group
+                    <div class="form-group">
                         <label asp-for="ThoiGianKetThuc">Thời Gian Kết Thúc</label>
                         <input asp-for="ThoiGianKetThuc" type="time" class="form-control" />
                         <span asp-validation-for="ThoiGianKetThuc" class="text-danger"></span>

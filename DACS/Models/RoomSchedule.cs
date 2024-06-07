@@ -17,7 +17,8 @@ namespace DACS.Models
 
         [Required]
         public string PhongHoc { get; set; }
-
+        [ForeignKey("PhongHoc")]
+        public Class? Class { get; set; }
 
         [Required]
         [Column(TypeName = "date")]

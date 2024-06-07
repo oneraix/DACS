@@ -1,0 +1,109 @@
+﻿@model DACS.Models.Class
+
+@{
+    Layout = "~/Areas/QL/Views/Shared/_QLLayout.cshtml";
+    ViewData["Title"] = "Xóa Phòng Học";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        .text-primary {
+            color: #6f42c1;
+        }
+
+        .card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            max-width: 600px;
+        }
+
+        .card-header {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #343a40;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .card-body div {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            font-size: 1.1em;
+            color: #495057;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.1em;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.1em;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-primary text-center">@ViewData["Title"]</h1>
+
+        <div class="card">
+            <div class="card-header">
+                Bạn có chắc chắn muốn xóa phòng học này không?
+            </div>
+
+            <div class="card-body">
+                <div>
+                    <strong>Mã Phòng Học:</strong>
+                    <p>@Model.MaPhongHoc</p>
+                </div>
+                <div>
+                    <strong>Số Phòng:</strong>
+                    <p>@Model.SoPhong</p>
+                </div>
+                <div>
+                    <strong>Tầng:</strong>
+                    <p>@Model.Tang</p>
+                </div>
+                <div>
+                    <strong>Ghi Chú:</strong>
+                    <p>@Model.GhiChu</p>
+                </div>
+                <div>
+                    <strong>Loại Phòng:</strong>
+                    <p>@Model.RoomCategory?.TenLoaiPhong</p>
+                </div>
+
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" asp-for="MaPhongHoc" />
+                    <div class="btn-container">
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                        <a asp-action="Index" class="btn btn-secondary ml-2">Quay lại danh sách</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

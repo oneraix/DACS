@@ -11,10 +11,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OfficeOpenXml;
 
-namespace DACS.Controllers
+namespace DACS.Areas.QL.Controllers
 {
-    [Area("Admin")]
-    [Authorize(Roles = Role.Role_Admin)]
+    [Area("QL")]
+    [Authorize(Roles = Role.Role_QL)]
     public class RoomScheduleController : Controller
     {
         private readonly IRoomScheduleRepository _roomScheduleRepository;

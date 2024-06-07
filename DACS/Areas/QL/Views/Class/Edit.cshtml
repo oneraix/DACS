@@ -1,0 +1,109 @@
+﻿@model DACS.Models.Class
+
+@{
+    Layout = "~/Areas/QL/Views/Shared/_QLLayout.cshtml";
+    ViewData["Title"] = "Chỉnh sửa phòng học";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        .text-primary {
+            color: #6f42c1;
+        }
+
+        .btn-primary {
+            background-color: #6f42c1;
+            border-color: #6f42c1;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+        }
+
+            .btn-primary:hover,
+            .btn-secondary:hover {
+                color: #fff;
+            }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .form-group input,
+        .form-group select {
+            border-radius: 5px;
+        }
+
+        .form-group span {
+            font-size: 0.875em;
+        }
+
+        .btn-container {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 title text-primary">@ViewData["Title"]</h1>
+
+        <div class="form-container">
+            <form asp-action="Edit" method="post">
+                <div class="form-group">
+                    <label asp-for="MaPhongHoc" class="text-primary">Mã Phòng Học</label>
+                    <input asp-for="MaPhongHoc" class="form-control" readonly />
+                    <span asp-validation-for="MaPhongHoc" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SoPhong" class="text-primary">Số Phòng</label>
+                    <input asp-for="SoPhong" class="form-control" />
+                    <span asp-validation-for="SoPhong" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Tang" class="text-primary">Tầng</label>
+                    <input asp-for="Tang" class="form-control" />
+                    <span asp-validation-for="Tang" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GhiChu" class="text-primary">Ghi Chú</label>
+                    <input asp-for="GhiChu" class="form-control" />
+                    <span asp-validation-for="GhiChu" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MaLoaiPhong" class="text-primary">Loại Phòng</label>
+                    <select asp-for="MaLoaiPhong" class="form-control" asp-items="ViewBag.MaLoaiPhong"></select>
+                    <span asp-validation-for="MaLoaiPhong" class="text-danger"></span>
+                </div>
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Quay lại danh sách</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

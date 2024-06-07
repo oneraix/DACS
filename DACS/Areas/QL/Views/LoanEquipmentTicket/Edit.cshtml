@@ -1,0 +1,144 @@
+﻿@model DACS.Models.LoanEquipmentTicket
+
+@{
+    ViewData["Title"] = "Chỉnh sửa Phiếu Mượn Thiết Bị";
+    Layout = "~/Areas/QL/Views/Shared/_QLLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        .text-primary {
+            color: #6f42c1;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: #fff;
+        }
+
+            .btn-primary:hover,
+            .btn-secondary:hover,
+            .btn-danger:hover,
+            .btn-success:hover {
+                color: #fff;
+            }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #6f42c1;
+        }
+
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .form-group input,
+        .form-group select {
+            border-radius: 5px;
+        }
+
+        .form-group span {
+            font-size: 0.875em;
+        }
+
+        .btn-container {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 title">@ViewData["Title"]</h1>
+
+        <div class="form-container">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="MaPhieuMuon" />
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="TenNguoiMuon" class="text-primary">Tên Người Mượn</label>
+                    <input asp-for="TenNguoiMuon" class="form-control" required />
+                    <span asp-validation-for="TenNguoiMuon" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MaThietBiMuon" class="text-primary">Tên Thiết Bị Mượn</label>
+                    <select asp-for="MaThietBiMuon" asp-items="@ViewBag.Equipments" class="form-control" required></select>
+                    <span asp-validation-for="MaThietBiMuon" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="SoLuongMuon" class="text-primary">Số Lượng Mượn</label>
+                    <input asp-for="SoLuongMuon" type="number" class="form-control" required />
+                    <span asp-validation-for="SoLuongMuon" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="NgayMuon" class="text-primary">Ngày Mượn</label>
+                    <input asp-for="NgayMuon" type="date" class="form-control" required />
+                    <span asp-validation-for="NgayMuon" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="NgayTra" class="text-primary">Ngày Trả</label>
+                    <input asp-for="NgayTra" type="datetime-local" class="form-control" />
+                    <span asp-validation-for="NgayTra" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MaPhongHoc" class="text-primary">Mã Phòng Học</label>
+                    <select asp-for="MaPhongHoc" asp-items="@ViewBag.Classrooms" class="form-control" required></select>
+                    <span asp-validation-for="MaPhongHoc" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="SDT" class="text-primary">Số Điện Thoại</label>
+                    <input asp-for="SDT" class="form-control" />
+                    <span asp-validation-for="SDT" class="text-danger"></span>
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-success">Lưu thay đổi</button>
+                    <a href="@Url.Action("Index")" class="btn btn-secondary ml-2">Quay lại danh sách</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
