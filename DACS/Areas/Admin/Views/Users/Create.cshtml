@@ -113,6 +113,17 @@
                         <input type="password" name="Password" class="form-control" placeholder="Nhập mật khẩu">
                         <span class="text-danger"></span>
                     </div>
+                    <div class="form-group">
+                        <label for="Role">Vai trò</label>
+                        <select name="Role" class="form-control">
+                            <option value="">Chọn loại tài khoản</option>
+                            @foreach (var role in ViewBag.Roles as SelectList)
+                            {
+                                <option value="@role.Value">@role.Text</option>
+                            }
+                        </select>
+                        <span class="text-danger"></span>
+                    </div>
                     <div class="btn-container d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Tạo tài khoản</button>
                         <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>

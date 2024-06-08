@@ -3,6 +3,8 @@ using DACS.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,31 +14,32 @@ namespace DACS.Areas.QL.Controllers
     [Authorize(Roles = Role.Role_QL)]
     public class UsersController : Controller
     {
-        private readonly IUserRepository _userRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UsersController(IUserRepository userRepository, RoleManager<IdentityRole> roleManager)
+        public UsersController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
-            _userRepository = userRepository;
+            _userManager = userManager;
             _roleManager = roleManager;
         }
 
-        // GET: Users
         public async Task<IActionResult> Index(string searchTerm, string roleName)
         {
             IEnumerable<ApplicationUser> users;
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                users = await _userRepository.SearchUsersAsync(searchTerm);
+                users = await _userManager.Users
+                    .Where(u => u.Email.Contains(searchTerm) || u.FullName.Contains(searchTerm))
+                    .ToListAsync();
             }
             else if (!string.IsNullOrEmpty(roleName))
             {
-                users = await _userRepository.GetUsersByRoleAsync(roleName);
+                users = await _userManager.GetUsersInRoleAsync(roleName);
             }
             else
             {
-                users = await _userRepository.GetAllUsersAsync();
+                users = await _userManager.Users.ToListAsync();
             }
 
             ViewBag.Roles = _roleManager.Roles;
@@ -45,85 +48,136 @@ namespace DACS.Areas.QL.Controllers
             return View(users);
         }
 
-        // GET: Users/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var roles = await _roleManager.Roles.Where(r => r.Name != "Admin").ToListAsync();
+            ViewBag.Roles = new SelectList(roles, "Name", "Name");
             return View();
         }
 
-        // POST: Users/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ApplicationUser user, string password)
+        public async Task<IActionResult> Create(ApplicationUser user, string role, string password)
         {
             if (ModelState.IsValid)
             {
-                var result = await _userRepository.CreateUserAsync(user, password);
+                user.UserName = user.Email; // Đảm bảo UserName là Email
+                var result = await _userManager.CreateAsync(user, password);
+
                 if (result.Succeeded)
                 {
+                    if (!string.IsNullOrEmpty(role))
+                    {
+                        await _userManager.AddToRoleAsync(user, role);
+                    }
+
                     return RedirectToAction(nameof(Index));
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
             }
+
+            var roles = await _roleManager.Roles.Where(r => r.Name != "Admin").ToListAsync();
+            ViewBag.Roles = new SelectList(roles, "Name", "Name", role);
             return View(user);
         }
 
-        // GET: Users/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            var user = await _userRepository.GetUserByIdAsync(id);
+            var user = await _userManager.FindByIdAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
+
+            var roles = await _roleManager.Roles.Where(r => r.Name != "Admin").ToListAsync();
+            ViewBag.Roles = new SelectList(roles, "Name", "Name");
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+            ViewBag.UserRoles = userRoles;
+
             return View(user);
         }
 
-        // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(ApplicationUser user)
+        public async Task<IActionResult> Edit(ApplicationUser user, string role)
         {
             if (ModelState.IsValid)
             {
-                var result = await _userRepository.UpdateUserAsync(user);
+                var existingUser = await _userManager.FindByIdAsync(user.Id);
+                if (existingUser == null)
+                {
+                    return NotFound();
+                }
+
+                existingUser.Email = user.Email;
+                existingUser.FullName = user.FullName;
+                existingUser.PhoneNumber = user.PhoneNumber;
+                existingUser.MaNhanVien = user.MaNhanVien;
+
+                var result = await _userManager.UpdateAsync(existingUser);
+
                 if (result.Succeeded)
                 {
+                    var currentRoles = await _userManager.GetRolesAsync(existingUser);
+                    await _userManager.RemoveFromRolesAsync(existingUser, currentRoles);
+                    if (!string.IsNullOrEmpty(role))
+                    {
+                        await _userManager.AddToRoleAsync(existingUser, role);
+                    }
+
                     return RedirectToAction(nameof(Index));
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
             }
+
+            var roles = await _roleManager.Roles.Where(r => r.Name != "Admin").ToListAsync();
+            ViewBag.Roles = new SelectList(roles, "Name", "Name", role);
+
             return View(user);
         }
 
-        // GET: Users/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            var user = await _userRepository.GetUserByIdAsync(id);
+            var user = await _userManager.FindByIdAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
+
             return View(user);
         }
 
-        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var result = await _userRepository.DeleteUserAsync(id);
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _userManager.DeleteAsync(user);
             if (result.Succeeded)
             {
                 return RedirectToAction(nameof(Index));
             }
-            return View();
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+
+            return View(user);
         }
     }
 }

@@ -1,0 +1,107 @@
+﻿@model DACS.Models.SupportRequest
+
+@{
+    ViewData["Title"] = "Lịch Sử Dụng Phòng";
+    Layout = "~/Areas/KTV/Views/Shared/_KTVLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .text-primary {
+            color: #6f42c1;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .form-group input,
+        .form-group select {
+            border-radius: 5px;
+        }
+
+        .form-group span {
+            font-size: 0.875em;
+        }
+
+        .btn-container {
+            text-align: right;
+        }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #6f42c1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 title">@ViewData["Title"]</h1>
+        <div class="form-container">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label">Mô tả</label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="MaPhongHoc" class="control-label">Mã Phòng Học</label>
+                    <select asp-for="MaPhongHoc" class="form-control" asp-items="@(new SelectList(ViewBag.Classes, "MaPhongHoc", "MaPhongHoc"))">
+                        <option value="">Chọn phòng học</option>
+                    </select>
+                    <span asp-validation-for="MaPhongHoc" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IssueCategoryId" class="control-label">Loại Vấn Đề</label>
+                    <select asp-for="IssueCategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.IssueCategories, "IssueCategoryId", "IssueCategoryName"))">
+                        <option value="">Chọn loại vấn đề</option>
+                    </select>
+                    <span asp-validation-for="IssueCategoryId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IssueDetailId" class="control-label">Chi Tiết Vấn Đề</label>
+                    <select asp-for="IssueDetailId" class="form-control" asp-items="@(new SelectList(ViewBag.IssueDetails, "Id", "Description"))">
+                        <option value="">Chọn chi tiết vấn đề</option>
+                    </select>
+                    <span asp-validation-for="IssueDetailId" class="text-danger"></span>
+                </div>
+
+                <input type="hidden" asp-for="IsResolved" value="false" />
+                <input type="hidden" asp-for="UserId" value="@ViewBag.UserId" />
+
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-success">Tạo mới</button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">Quay lại danh sách</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

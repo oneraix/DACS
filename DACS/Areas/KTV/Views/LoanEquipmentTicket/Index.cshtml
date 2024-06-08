@@ -1,0 +1,150 @@
+﻿@model IEnumerable<DACS.Models.LoanEquipmentTicket>
+
+@{
+    ViewData["Title"] = "Danh sách phiếu mượn thiết bị";
+    Layout = "~/Areas/KTV/Views/Shared/_KTVLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .text-primary {
+            color: #007bff;
+        }
+
+        .text-secondary {
+            color: #6c757d;
+        }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        .table tbody td {
+            color: #495057;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: #fff;
+        }
+
+            .btn-primary:hover,
+            .btn-info:hover,
+            .btn-danger:hover,
+            .btn-success:hover {
+                color: #fff;
+            }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="title text-primary">@ViewData["Title"]</h1>
+
+        <div class="form-container">
+            <form asp-action="Index" method="get" class="form-inline">
+                <div class="form-group mr-3">
+                    <label for="searchDevice" class="mr-2">Thiết bị mượn:</label>
+                    <input type="text" id="searchDevice" name="searchDevice" class="form-control" value="@ViewBag.SearchDevice" />
+                </div>
+                <div class="form-group mr-3">
+                    <label for="searchDate" class="mr-2">Ngày mượn:</label>
+                    <input type="date" id="searchDate" name="searchDate" class="form-control" value="@ViewBag.SearchDate" />
+                </div>
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                <a asp-action="Create" class="btn btn-success ml-auto">Tạo phiếu mượn</a>
+            </form>
+        </div>
+
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Ticket ID</th>
+                    <th>Tên Người Mượn</th>
+                    <th>Phòng</th>
+                    <th>Thiết bị</th>
+                    <th>Số lượng</th>
+                    <th>Ngày mượn</th>
+                    <th>Tình trạng</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ticket in Model)
+                {
+                    <tr>
+                        <td>@ticket.MaPhieuMuon</td>
+                        <td>@ticket.TenNguoiMuon</td>
+                        <td>@ticket.Class.MaPhongHoc</td>
+                        <td>@ticket.LoanEquipment?.TenThietBiMuon</td>
+                        <td>@ticket.SoLuongMuon</td>
+                        <td>@ticket.NgayMuon.ToString("dd-MM-yyyy HH:mm")</td>
+                        <td>
+                            @if (ticket.NgayTra == null)
+                            {
+                                <span class="badge badge-warning">Chưa trả</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-success">Đã trả</span>
+                            }
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details", "LoanEquipmentTicket", new { id = ticket.MaPhieuMuon })" class="btn btn-outline-primary btn-sm">Chi tiết</a>
+                            <a href="@Url.Action("Edit", "LoanEquipmentTicket", new { id = ticket.MaPhieuMuon })" class="btn btn-outline-secondary btn-sm">Chỉnh sửa</a>
+                            <a href="@Url.Action("Delete", "LoanEquipmentTicket", new { id = ticket.MaPhieuMuon })" class="btn btn-outline-danger btn-sm">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -8,21 +8,25 @@
 
   <ItemGroup>
     <Compile Remove="Areas\Admin\Controllers\**" />
+    <Compile Remove="Areas\KTV\Views\GV\**" />
     <Compile Remove="Views\Class\**" />
     <Compile Remove="Views\Home\**" />
     <Compile Remove="Views\LoanEquipmentTicket\**" />
     <Compile Remove="Views\LoanEquipment\**" />
     <Content Remove="Areas\Admin\Controllers\**" />
+    <Content Remove="Areas\KTV\Views\GV\**" />
     <Content Remove="Views\Class\**" />
     <Content Remove="Views\Home\**" />
     <Content Remove="Views\LoanEquipmentTicket\**" />
     <Content Remove="Views\LoanEquipment\**" />
     <EmbeddedResource Remove="Areas\Admin\Controllers\**" />
+    <EmbeddedResource Remove="Areas\KTV\Views\GV\**" />
     <EmbeddedResource Remove="Views\Class\**" />
     <EmbeddedResource Remove="Views\Home\**" />
     <EmbeddedResource Remove="Views\LoanEquipmentTicket\**" />
     <EmbeddedResource Remove="Views\LoanEquipment\**" />
     <None Remove="Areas\Admin\Controllers\**" />
+    <None Remove="Areas\KTV\Views\GV\**" />
     <None Remove="Views\Class\**" />
     <None Remove="Views\Home\**" />
     <None Remove="Views\LoanEquipmentTicket\**" />
@@ -39,6 +43,10 @@
 
   <ItemGroup>
     <Content Remove="Areas\Admin\Views\Shared\Error.cshtml" />
+    <Content Remove="Areas\KTV\Views\LoanEquipmentTicket\Create.cshtml" />
+    <Content Remove="Areas\KTV\Views\LoanEquipmentTicket\Delete.cshtml" />
+    <Content Remove="Areas\KTV\Views\LoanEquipmentTicket\Details.cshtml" />
+    <Content Remove="Areas\KTV\Views\LoanEquipmentTicket\Edit.cshtml" />
     <Content Remove="Areas\QL\Views\LoanEquipmentTicket\Create.cshtml" />
     <Content Remove="Areas\QL\Views\LoanEquipmentTicket\Delete.cshtml" />
     <Content Remove="Areas\QL\Views\LoanEquipmentTicket\Details.cshtml" />
@@ -84,10 +92,8 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\GV\Controllers\" />
     <Folder Include="Areas\GV\Data\" />
     <Folder Include="Areas\GV\Models\" />
-    <Folder Include="Areas\KTV\Controllers\" />
     <Folder Include="Areas\KTV\Data\" />
     <Folder Include="Areas\KTV\Models\" />
     <Folder Include="Areas\QL\Data\" />
@@ -100,10 +106,53 @@
     <None Include="Areas\Admin\Views\LoanEquipmentTicket\Details.cshtml" />
     <None Include="Areas\Admin\Views\LoanEquipmentTicket\Edit.cshtml" />
     <None Include="Areas\Admin\Views\LoanEquipmentTicket\Index.cshtml" />
+    <None Include="Areas\KTV\Views\LoanEquipmentTicket\Create.cshtml" />
+    <None Include="Areas\KTV\Views\LoanEquipmentTicket\Delete.cshtml" />
+    <None Include="Areas\KTV\Views\LoanEquipmentTicket\Details.cshtml" />
+    <None Include="Areas\KTV\Views\LoanEquipmentTicket\Edit.cshtml" />
     <None Include="Areas\QL\Views\LoanEquipmentTicket\Create.cshtml" />
     <None Include="Areas\QL\Views\LoanEquipmentTicket\Delete.cshtml" />
     <None Include="Areas\QL\Views\LoanEquipmentTicket\Details.cshtml" />
     <None Include="Areas\QL\Views\LoanEquipmentTicket\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\KTV\Views\Class\Edit.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KTV\Views\Class\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KTV\Views\LoanEquipmentTicket\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KTV\Views\RoomSchedule\Edit.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KTV\Views\RoomSchedule\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KTV\Views\SupportRequest\Create.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KTV\Views\SupportRequest\Delete.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KTV\Views\SupportRequest\Edit.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\KTV\Views\SupportRequest\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
