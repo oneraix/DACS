@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DACS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240602005416_capnhatnhe")]
-    partial class capnhatnhe
+    [Migration("20240608033550_Inittial")]
+    partial class Inittial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -235,6 +235,40 @@ namespace DACS.Migrations
                     b.ToTable("RoomCategories");
                 });
 
+            modelBuilder.Entity("DACS.Models.RoomSchedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("GiangVien")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MonHoc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Ngay")
+                        .HasColumnType("date");
+
+                    b.Property<string>("PhongHoc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<TimeSpan>("ThoiGianBatDau")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan>("ThoiGianKetThuc")
+                        .HasColumnType("time");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PhongHoc");
+
+                    b.ToTable("RoomSchedules");
+                });
+
             modelBuilder.Entity("DACS.Models.SupportRequest", b =>
                 {
                     b.Property<int>("RequestId")
@@ -452,6 +486,17 @@ namespace DACS.Migrations
                     b.Navigation("Class");
 
                     b.Navigation("LoanEquipment");
+                });
+
+            modelBuilder.Entity("DACS.Models.RoomSchedule", b =>
+                {
+                    b.HasOne("DACS.Models.Class", "Class")
+                        .WithMany()
+                        .HasForeignKey("PhongHoc")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Class");
                 });
 
             modelBuilder.Entity("DACS.Models.SupportRequest", b =>

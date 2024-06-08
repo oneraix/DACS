@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DACS.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Inittial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -269,6 +269,30 @@ namespace DACS.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RoomSchedules",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MonHoc = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GiangVien = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhongHoc = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Ngay = table.Column<DateTime>(type: "date", nullable: false),
+                    ThoiGianBatDau = table.Column<TimeSpan>(type: "time", nullable: false),
+                    ThoiGianKetThuc = table.Column<TimeSpan>(type: "time", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RoomSchedules", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RoomSchedules_Classes_PhongHoc",
+                        column: x => x.PhongHoc,
+                        principalTable: "Classes",
+                        principalColumn: "MaPhongHoc",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SupportRequests",
                 columns: table => new
                 {
@@ -371,6 +395,11 @@ namespace DACS.Migrations
                 column: "MaThietBiMuon");
 
             migrationBuilder.CreateIndex(
+                name: "IX_RoomSchedules_PhongHoc",
+                table: "RoomSchedules",
+                column: "PhongHoc");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SupportRequests_IssueCategoryId",
                 table: "SupportRequests",
                 column: "IssueCategoryId");
@@ -411,6 +440,9 @@ namespace DACS.Migrations
 
             migrationBuilder.DropTable(
                 name: "LoanEquipmentTickets");
+
+            migrationBuilder.DropTable(
+                name: "RoomSchedules");
 
             migrationBuilder.DropTable(
                 name: "SupportRequests");
