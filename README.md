@@ -1,4 +1,4 @@
-|![logo moi](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.001.jpeg)|<p><a name="_hlk70028724"></a>BỘ GIÁO DỤC VÀ ĐÀO TẠO</p><p>**TRƯỜNG ĐẠI HỌC CÔNG NGHỆ TP. HCM**</p>|
+|![logo moi](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.001.jpeg)|<p><a name="_hlk70028724"></a>BỘ GIÁO DỤC VÀ ĐÀO TẠO</p><p>**TRƯỜNG ĐẠI HỌC CÔNG NGHỆ TP. HCM**</p>|
 | :-: | :-: |
 
 
