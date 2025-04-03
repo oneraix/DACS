@@ -31,50 +31,9 @@ Tên	Lớp	MSSV
 
 <a name="_toc74340021"></a><a name="_toc43632040"></a><a name="_toc53740267"></a><a name="_toc48651666"></a><a name="_toc62568406"></a>TP. Hồ Chí Minh, 2024
 
-# <a name="_toc146467136"></a><a name="_toc13963"></a>**LỜI CẢM ƠN**
-Lời đầu tiên, chúng em xin chân thành cảm ơn Thầy Võ Tấn Dũng hướng dẫn đồ án cơ sở cho chúng em. 
-
-Sau thời gian học tập và và tìm hiểu dưới sự hướng dẫn của thầy, chúng em đã rút ra được rất nhiều kinh nghiệm về cách thức phân tích và thiết kế cũng như kỹ năng làm việc mà không chỉ đơn giản là đọc trong sách vở có thể có được và một lần nữa, chúng em xin gửi lời cảm ơn sâu sắc nhất đến Thầy đã dạy bảo và hướng dẫn những kiến thức chuyên môn cần có để chúng em áp dụng tốt nhất những gì đã được học suốt những thời gian qua.
-
-Trong quá trình thực hiện và làm báo cáo, do còn thiếu nhiều kinh nghiệm thực tế nên không tránh khỏi những sai sót. Chúng em rất mong nhận được những ý kiến đóng góp của Thầy để giúp chúng em trong lĩnh vực này được hoàn thiện hơn. Đó là hành trang quý giá giúp chúng em hoàn thiện kiến thức của mình sau này.
-
-Chúng em xin chân thành cảm ơn và trân trọng kính chào!
-# **<a name="_toc74340022"></a><a name="_toc43632041"></a><a name="_toc48651667"></a><a name="_toc53740268"></a><a name="_toc62568407"></a><a name="_toc146467137"></a><a name="_toc28653"></a>NHẬN XÉT & ĐÁNH GIÁ CỦA GIẢNG VIÊN HƯỚNG DẪN**
-Qua quá trình học tập: 
-
-Giáo viên hướng dẫn có một số nhận xét, đánh giá như sau:
-
-1/- Quá trình học tập
-
-
-
-2/- Thực hiện báo cáo
-
-
-
-Đánh giá chung
-
-
-
-Kết quả đạt được: 
-
-Điểm đánh giá việc thực hiện báo cáo………/10
-
-*TP. HCM, Ngày 28 tháng 04 năm 2023*
-
-**GIẢNG VIÊN HƯỚNG DẪN**
-
-
-
-
-<a name="_toc43632042"></a><a name="_toc48651668"></a>**ThS.** 
-**
 
 # <a name="_toc146467138"></a><a name="_toc74340023"></a><a name="_toc14179"></a><a name="_toc43632044"></a><a name="_toc48651670"></a><a name="_toc53740271"></a>**MỤC LỤC**
 
-[**LỜI CẢM ƠN	i****](#_toc13963)**
-
-[**NHẬN XÉT & ĐÁNH GIÁ CỦA GIẢNG VIÊN HƯỚNG DẪN**	ii](#_toc28653)
 
 [**MỤC LỤC**	iii](#_toc14179)
 
