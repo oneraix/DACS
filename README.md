@@ -542,10 +542,11 @@ Lưu trữ thông tin phiếu mượn phòng gồm: tên người mượn, mã t
 
 <a name="_toc3393"></a>**Hình 2.37  Giao diện trang tạo lịch sử dụng phòng**
 
-<video width="320" height="240" controls>
-  <source src="demo/448221248_7972127899516212_879103393974927019_n.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+
+# DEMO
+
+[Watch the demo video](https://github.com/user-attachments/assets/0fb84fa6-24a6-47a2-9bd1-5b4ef1b1debb)
+
 
 
 
