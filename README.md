@@ -437,35 +437,25 @@ Lưu trữ thông tin phiếu mượn phòng gồm: tên người mượn, mã t
 
 1. ## <a name="_toc74340043"></a><a name="_toc146467162"></a><a name="_toc22479"></a>**Các mô hình dữ liệu**
    1. ### <a name="_toc146467163"></a><a name="_toc74340044"></a><a name="_toc28332"></a><a name="_toc729"></a><a name="_toc29624"></a><a name="_toc22672"></a>***Mô hình UseCase tổng quát***
-![A diagram of a person's conversation
-
-Description automatically generated](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.017.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.017.png)
 
 <a name="_toc74340003"></a><a name="_toc146467193"></a><a name="_toc27198"></a>**Hình 2.13 Mô hình UseCase tổng quát**
 1. ### <a name="_toc74340045"></a><a name="_toc146467164"></a><a name="_toc20253"></a><a name="_toc14114"></a><a name="_toc20434"></a><a name="_toc14486"></a>***Mô hình UseCase quản lý tài khoản***
-![A diagram of a diagram
-
-Description automatically generated](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.018.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.018.png)
 
 <a name="_toc74340004"></a><a name="_toc146467194"></a><a name="_toc26430"></a>**Hình 2.14 Mô hình UseCase quản lý tài khoản**
 1. ### <a name="_toc74340046"></a><a name="_toc146467165"></a><a name="_toc4509"></a><a name="_toc27883"></a><a name="_toc8372"></a><a name="_toc17925"></a>***Mô hình UseCase quản lý yêu cầu hỗ trợ***
-![A diagram of a diagram
-
-Description automatically generated](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.019.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.019.png)
 
 <a name="_toc146467195"></a><a name="_toc74340005"></a><a name="_toc10217"></a>**Hình 2.15 Mô hình UseCase quản lý yêu cầu hỗ trợ**
 
 1. ### <a name="_toc912"></a><a name="_toc13462"></a><a name="_toc24685"></a><a name="_toc24867"></a>***Mô hình UseCase quản lý mượn thiết bị***
-![A diagram of a diagram
-
-Description automatically generated](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.020.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.020.png)
 
 <a name="_toc26388"></a>**Hình 2.16 Mô hình UseCase quản lý mượn thiết bị**
 
 1. ### <a name="_toc4751"></a><a name="_toc16306"></a><a name="_toc9296"></a><a name="_toc8636"></a>***Mô hình UseCase quản lý lịch sử dụng phòng***
-![A diagram of a diagram
-
-Description automatically generated](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.021.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.021.png)
 
 <a name="_toc28034"></a>**Hình 2.17 Mô hình UseCase quản lý lịch sử dụng phòng**
 
