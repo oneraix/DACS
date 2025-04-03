@@ -1,4 +1,4 @@
-|![logo moi](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.001.jpeg)|<p><a name="_hlk70028724"></a>BỘ GIÁO DỤC VÀ ĐÀO TẠO</p><p>**TRƯỜNG ĐẠI HỌC CÔNG NGHỆ TP. HCM**</p>|
+|![logo moi](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.001.jpeg)|<p><a name="_hlk70028724"></a>BỘ GIÁO DỤC VÀ ĐÀO TẠO</p><p>**TRƯỜNG ĐẠI HỌC CÔNG NGHỆ TP. HCM**</p>|
 | :-: | :-: |
 
 
@@ -329,7 +329,7 @@ Phạm vi xoay quanh các các phần mềm quản lý, đảm bảo đầy đ�
    1. ### <a name="_toc4958"></a><a name="_toc15922"></a><a name="_toc31867"></a><a name="_toc11138"></a><a name="_toc146467149"></a>***Khái niệm ngôn ngữ lập trình*** 
 **C#** (**C Sharp**, đọc là *"xi-sáp"*) là một [ngôn ngữ lập trình](https://vi.wikipedia.org/wiki/Ng%C3%B4n_ng%E1%BB%AF_l%E1%BA%ADp_tr%C3%ACnh "Ngôn ngữ lập trình") [hướng đối tượng](https://vi.wikipedia.org/wiki/L%E1%BA%ADp_tr%C3%ACnh_h%C6%B0%E1%BB%9Bng_%C4%91%E1%BB%91i_t%C6%B0%E1%BB%A3ng "Lập trình hướng đối tượng") đa năng, mạnh mẽ được phát triển bởi [Microsoft](https://vi.wikipedia.org/wiki/Microsoft "Microsoft"), C# là phần khởi đầu cho kế hoạch [.NET](https://vi.wikipedia.org/wiki/.NET_Framework ".NET Framework") của họ. Tên của ngôn ngữ bao gồm ký tự thăng theo Microsoft nhưng theo [ECMA](https://vi.wikipedia.org/w/index.php?title=ECMA&action=edit&redlink=1 "ECMA (trang không tồn tại)") là **C#**, chỉ bao gồm dấu số thường. Microsoft phát triển C# dựa trên [C++](https://vi.wikipedia.org/wiki/C++ "C++") và [Java]. C# được miêu tả là ngôn ngữ có được sự cân bằng giữa C++, [Visual Basic](https://vi.wikipedia.org/wiki/Visual_Basic "Visual Basic"), [Delphi](https://vi.wikipedia.org/wiki/Delphi_\(ng%C3%B4n_ng%E1%BB%AF_l%E1%BA%ADp_tr%C3%ACnh\) "Delphi (ngôn ngữ lập trình)") và [Java].
 
-![IMG_256](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.002.png)
+![IMG_256](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.002.png)
 
 <a name="_toc21443"></a>**Hình 1.1: Logo ngôn ngữ lập trình C#**
 
@@ -346,7 +346,7 @@ ASP.NET Core bao gồm các thành phần theo hướng module nhằm tối thi�
 
 Đồng thời nó đã trở thành một mã nguồn mở. Đây là một thay đổi rất lớn và theo mình là quan trọng nhất của ASP.NET Core. Điều mà trước đây khó có một lập trình viên nào có thể nghĩ đến. Có lẽ đó cũng là một xu thế mà các ngôn ngữ lập trình hiện nay đang hướng tới.
 
-![IMG_256](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.003.jpeg)
+![IMG_256](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.003.jpeg)
 
 <a name="_toc14430"></a>**Hình 1.2: Logo ASP.NET Core**
 
@@ -365,7 +365,7 @@ Có thể khi thấy chữ server thì nhiều bạn sẽ có những hiểu nh�
 
 \+ Thứ ba, nó sử dụng câu lệnh SQL (Transact-SQL) để trao đổi dữ liệu giữa máy khách (máy Client) và máy cài SQL Server.
 
-![IMG_256](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.004.png)
+![IMG_256](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.004.png)
 
 <a name="_toc2587"></a>**Hình 1.3: Logo SQL Server**
 
@@ -379,93 +379,83 @@ Có thể khi thấy chữ server thì nhiều bạn sẽ có những hiểu nh�
    1. ### <a name="_toc74340037"></a><a name="_toc146467156"></a><a name="_toc15434"></a><a name="_toc5574"></a><a name="_toc31834"></a><a name="_toc25114"></a>***Bảng lưu thông tin tài khoản (AspNetUsers)***
 Sử dụng Id để làm khoá
 
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.006.png)  
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.006.png)  
 
 <a name="_toc146467187"></a><a name="_toc74339997"></a><a name="_toc16503"></a>**Hình 2.2 Bảng lưu thông tin tài khoản**
 1. ### <a name="_toc74340038"></a><a name="_toc146467157"></a><a name="_toc22125"></a><a name="_toc15177"></a><a name="_toc7107"></a><a name="_toc22149"></a>***Bảng lưu thông tin danh sách các phòng học (Classes)***
 Sử dụng MaPhongHoc làm khóa chính
 
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.007.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.007.png)
 
 <a name="_toc146467188"></a><a name="_toc74339998"></a><a name="_toc26663"></a>**Hình 2.3 Bảng lưu thông tin các phòng học**
 1. ### <a name="_toc74340039"></a><a name="_toc146467158"></a><a name="_toc3933"></a><a name="_toc23001"></a><a name="_toc10927"></a><a name="_toc7101"></a>***Bảng lưu thông tin loại phòng (RoomCategory)***
 Sử dụng MaLoaiPhong làm khóa chính
 
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.008.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.008.png)
 
 <a name="_toc146467189"></a><a name="_toc74339999"></a><a name="_toc1870"></a>**Hình 2.4 Bảng lưu thông tin loại phòng**
 1. ### <a name="_toc74340040"></a><a name="_toc146467159"></a><a name="_toc25271"></a><a name="_toc12555"></a><a name="_toc5203"></a><a name="_toc29655"></a>***Bảng lưu thông tin phòng học (RoomSchecdules)***
 Lưu thông tin phòng học nhằm dùng để phân loại các phòng với nhau
 
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.009.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.009.png)
 
 <a name="_toc74340000"></a><a name="_toc146467190"></a><a name="_toc23528"></a>**Hình 2.5 Bảng lưu thông tin phòng học**
 1. ### <a name="_toc146467160"></a><a name="_toc74340041"></a><a name="_toc29082"></a><a name="_toc12866"></a><a name="_toc16731"></a><a name="_toc1716"></a>***Bảng lưu thông tin phiếu mượn phòng (LoanEquipmentTickets)***
 Lưu trữ thông tin phiếu mượn phòng gồm: tên người mượn, mã thiết bị mượn, số lượng mượn,..
 
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.010.png) 
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.010.png) 
 
 <a name="_toc74340001"></a><a name="_toc146467191"></a><a name="_toc10716"></a>**Hình 2.6 Bảng lưu thông tin phiếu mượn phòng**
 1. ### <a name="_toc74340042"></a><a name="_toc146467161"></a><a name="_toc24525"></a><a name="_toc31720"></a><a name="_toc13529"></a><a name="_toc1360"></a>***Bảng lưu chi tiết thiết bị mượn (LoanEquipments)***
 Ứng với mỗi phiếu mượn sẽ có một chi tiết thiết bị mượn để lưu trữ thông tin thiết bị và số lượng thiết bị đã mượn.
 
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.011.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.011.png)
 
 <a name="_toc74340002"></a><a name="_toc146467192"></a><a name="_toc30445"></a>**Hình 2.7 Bảng lưu chi tiết thiết bị mượn**
 1. ### ` `***<a name="_toc25491"></a><a name="_toc20998"></a><a name="_toc333"></a><a name="_toc2521"></a>Bảng lưu vai trò***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.012.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.012.png)
 
 <a name="_toc23649"></a>**Hình 2.8 Bảng lưu vai trò**
 1. ### ` `***<a name="_toc20564"></a><a name="_toc9638"></a><a name="_toc8982"></a><a name="_toc18771"></a>Bảng lưu thông tin từng vai trò***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.013.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.013.png)
 
 <a name="_toc12733"></a>**Hình 2.9  Bảng lưu thông tin từng vai trò**
 
 1. ### ` `***<a name="_toc14407"></a><a name="_toc6986"></a><a name="_toc29819"></a><a name="_toc30995"></a>Bảng lưu thông tin quản lý yêu cầu hỗ trợ cá nhân*** 
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.014.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.014.png)
 
 **Hình 2.10  Bảng lưu thông tin quản lý yêu cầu hỗ trợ cá nhân**
 1. ### ` `***<a name="_toc29304"></a><a name="_toc20871"></a><a name="_toc14204"></a><a name="_toc24318"></a>Bảng lưu vấn đề sự cố***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.015.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.015.png)
 
 <a name="_toc7530"></a>**Hình 2.11  Bảng lưu vấn đề sự cố**
 1. ### ` `***<a name="_toc14265"></a><a name="_toc28485"></a><a name="_toc30362"></a><a name="_toc20137"></a>Bảng lưu chi tiết sự cố***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.016.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.016.png)
 
 <a name="_toc24659"></a>**Hình 2.12  Bảng lưu chi tiết sự cố**
 
 
 1. ## <a name="_toc74340043"></a><a name="_toc146467162"></a><a name="_toc22479"></a>**Các mô hình dữ liệu**
    1. ### <a name="_toc146467163"></a><a name="_toc74340044"></a><a name="_toc28332"></a><a name="_toc729"></a><a name="_toc29624"></a><a name="_toc22672"></a>***Mô hình UseCase tổng quát***
-![A diagram of a person's conversation
-
-Description automatically generated](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.017.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.017.png)
 
 <a name="_toc74340003"></a><a name="_toc146467193"></a><a name="_toc27198"></a>**Hình 2.13 Mô hình UseCase tổng quát**
 1. ### <a name="_toc74340045"></a><a name="_toc146467164"></a><a name="_toc20253"></a><a name="_toc14114"></a><a name="_toc20434"></a><a name="_toc14486"></a>***Mô hình UseCase quản lý tài khoản***
-![A diagram of a diagram
-
-Description automatically generated](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.018.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.018.png)
 
 <a name="_toc74340004"></a><a name="_toc146467194"></a><a name="_toc26430"></a>**Hình 2.14 Mô hình UseCase quản lý tài khoản**
 1. ### <a name="_toc74340046"></a><a name="_toc146467165"></a><a name="_toc4509"></a><a name="_toc27883"></a><a name="_toc8372"></a><a name="_toc17925"></a>***Mô hình UseCase quản lý yêu cầu hỗ trợ***
-![A diagram of a diagram
-
-Description automatically generated](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.019.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.019.png)
 
 <a name="_toc146467195"></a><a name="_toc74340005"></a><a name="_toc10217"></a>**Hình 2.15 Mô hình UseCase quản lý yêu cầu hỗ trợ**
 
 1. ### <a name="_toc912"></a><a name="_toc13462"></a><a name="_toc24685"></a><a name="_toc24867"></a>***Mô hình UseCase quản lý mượn thiết bị***
-![A diagram of a diagram
-
-Description automatically generated](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.020.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.020.png)
 
 <a name="_toc26388"></a>**Hình 2.16 Mô hình UseCase quản lý mượn thiết bị**
 
 1. ### <a name="_toc4751"></a><a name="_toc16306"></a><a name="_toc9296"></a><a name="_toc8636"></a>***Mô hình UseCase quản lý lịch sử dụng phòng***
-![A diagram of a diagram
-
-Description automatically generated](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.021.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.021.png)
 
 <a name="_toc28034"></a>**Hình 2.17 Mô hình UseCase quản lý lịch sử dụng phòng**
 
@@ -484,71 +474,71 @@ Description automatically generated](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62f
 
 <a name="_toc146467198"></a><a name="_toc74340008"></a><a name="_toc8343"></a>**Hình 2.20 Giao diện trang chủ**
 1. ### <a name="_toc146467170"></a><a name="_toc74340051"></a><a name="_toc12724"></a><a name="_toc16046"></a><a name="_toc5017"></a><a name="_toc5920"></a>***Giao diện trang đăng nhập***
-![446024572_774763448075021_4152980985904974313_n](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.023.png)
+![446024572_774763448075021_4152980985904974313_n](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.023.png)
 
 <a name="_toc146467199"></a><a name="_toc74340009"></a><a name="_toc11208"></a>**Hình 2.21 Giao diện trang đăng nhập**
 1. ### <a name="_toc74340052"></a><a name="_toc146467171"></a><a name="_toc21509"></a><a name="_toc3704"></a><a name="_toc6276"></a><a name="_toc16990"></a><a name="_toc146467172"></a><a name="_toc74340053"></a>***Giao diện trang đăng ký tài khoản***
 
 <a name="_toc146467200"></a><a name="_toc74340010"></a><a name="_toc16920"></a>**Hình 2.22 Giao diện trang đăng ký tài khoản**
 1. ### <a name="_toc5703"></a><a name="_toc7111"></a><a name="_toc27664"></a><a name="_toc7074"></a>***Giao diện trang danh sách các phòng***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.024.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.024.png)
 
 <a name="_toc146467201"></a><a name="_toc74340011"></a><a name="_toc17775"></a>**Hình 2.23 Giao diện trang danh sách các phòng**
 1. ### <a name="_toc146467173"></a><a name="_toc74340054"></a><a name="_toc17235"></a><a name="_toc2373"></a><a name="_toc29366"></a><a name="_toc15695"></a>***Giao diện trang sửa thông tin phòng học***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.025.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.025.png)
 
 <a name="_toc74340012"></a><a name="_toc146467202"></a><a name="_toc24260"></a>**Hình 2.24 Giao diện trang sửa thông tin phòng học**
 1. ### <a name="_toc146467174"></a><a name="_toc74340055"></a><a name="_toc21100"></a><a name="_toc7736"></a><a name="_toc8786"></a><a name="_toc21645"></a>***Giao diện trang phiếu mượn thiết bị*** 
-![Screenshot 2024-06-08 231200](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.026.png)
+![Screenshot 2024-06-08 231200](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.026.png)
 
 <a name="_toc146467203"></a><a name="_toc74340013"></a><a name="_toc1578"></a>**Hình 2.25 Giao diện trang phiếu mượn thiết bị**
 1. ### <a name="_toc146467175"></a><a name="_toc74340056"></a><a name="_toc19797"></a><a name="_toc11785"></a><a name="_toc12931"></a><a name="_toc19446"></a>***Giao diện trang chi tiết phiếu mượn***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.027.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.027.png)
 
 <a name="_toc146467204"></a><a name="_toc74340014"></a><a name="_toc23926"></a>**Hình 2.26 Giao diện trang chi tiết phiếu mượn**
 1. ### <a name="_toc74340057"></a><a name="_toc146467176"></a><a name="_toc25384"></a><a name="_toc7626"></a><a name="_toc10196"></a><a name="_toc22652"></a>***Giao diện trang chỉnh sửa phiếu mượn***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.028.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.028.png)
 
 <a name="_toc146467205"></a><a name="_toc74340015"></a><a name="_toc14346"></a>**Hình 2.27 Giao diện trang chỉnh sửa phiếu mượn**
 1. ### <a name="_toc146467177"></a><a name="_toc74340058"></a><a name="_toc20599"></a><a name="_toc3928"></a><a name="_toc3430"></a><a name="_toc7189"></a>***Giao diện trang quản lý danh sách thiết bị mượn***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.029.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.029.png)
 
 <a name="_toc74340016"></a><a name="_toc146467206"></a><a name="_toc27671"></a>**Hình 2.28 Giao diện trang quản lý danh sách thiết bị mượn**
 1. ### <a name="_toc74340059"></a><a name="_toc146467178"></a><a name="_toc29925"></a><a name="_toc23787"></a><a name="_toc9875"></a><a name="_toc4473"></a>***Giao diện trang chỉnh sửa danh sách thiết bị mượn***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.030.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.030.png)
 
 <a name="_toc146467207"></a><a name="_toc74340017"></a><a name="_toc5381"></a>**Hình 2.29 Giao diện trang chỉnh sửa thiết bị mượn**
 1. ### <a name="_toc146467179"></a><a name="_toc74340060"></a><a name="_toc6261"></a><a name="_toc8046"></a><a name="_toc28175"></a><a name="_toc15794"></a>***Giao diện trang quản lý tài khoản***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.031.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.031.png)
 
 <a name="_toc74340018"></a><a name="_toc146467208"></a><a name="_toc22958"></a>**Hình 2.30 Giao diện trang quản lý tài khoản**
 1. ### <a name="_toc146467180"></a><a name="_toc74340061"></a><a name="_toc14696"></a><a name="_toc24670"></a><a name="_toc19588"></a><a name="_toc27913"></a>***Giao diện trang chỉnh sửa tài khoản***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.032.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.032.png)
 
 <a name="_toc146467209"></a><a name="_toc74340019"></a><a name="_toc24903"></a>**Hình 2.31 Giao diện trang chỉnh sửa tài khoản**
 1. ### <a name="_toc74340062"></a><a name="_toc146467181"></a><a name="_toc14616"></a><a name="_toc9618"></a><a name="_toc2205"></a><a name="_toc30572"></a>***Giao diện trang quản lý thông báo sự cố*** 
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.033.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.033.png)
 
 <a name="_toc74340020"></a><a name="_toc146467210"></a><a name="_toc19954"></a>**Hình 2.32 Giao diện trang quản lý thông báo sự cố**
 1. ### <a name="_toc16928"></a><a name="_toc6558"></a><a name="_toc11094"></a><a name="_toc12729"></a>***Giao diện trang chỉnh sửa yêu cầu hỗ trợ***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.034.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.034.png)
 
 <a name="_toc12541"></a>**Hình 2.33  Giao diện trang chỉnh sửa yêu cầu hỗ trợ**
 1. ### <a name="_toc16305"></a><a name="_toc8053"></a><a name="_toc26058"></a><a name="_toc20068"></a>***Giao diện trang quản lý sự cố***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.035.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.035.png)
 
 <a name="_toc12900"></a>**Hình 2.34  Giao diên trang quản lý sự cố**
 
 1. ### ` `***<a name="_toc10801"></a><a name="_toc8489"></a><a name="_toc6023"></a><a name="_toc19936"></a>Giao diện trang chỉnh sửa chi tiết vấn đề***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.036.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.036.png)
 
 <a name="_toc32138"></a>**Hình 2.35  Giao diện trang chỉnh sửa chi tiết vấn đề**
 1. ### ` `***<a name="_toc31111"></a><a name="_toc30414"></a><a name="_toc17464"></a><a name="_toc26207"></a>Giao diện trang lịch sử dụng phòng***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.037.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.037.png)
 
 <a name="_toc312"></a>**Hình 2.36  Giao diện trang lịch sử dụng phòng**
 1. ### ` `***<a name="_toc30132"></a><a name="_toc26701"></a><a name="_toc2264"></a><a name="_toc20922"></a>Giao diện trang tạo lịch sử dụng phòng***
-![](Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.038.png)
+![](demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.038.png)
 
 <a name="_toc3393"></a>**Hình 2.37  Giao diện trang tạo lịch sử dụng phòng**
 
@@ -694,5 +684,5 @@ Trong quá trình xây dựng và hoàn thiện website chúng em cảm thấy c
 14
 
 [Java]: https://vi.wikipedia.org/wiki/Java_(ng%C3%B4n_ng%E1%BB%AF_l%E1%BA%ADp_tr%C3%ACnh) "Java (ngôn ngữ lập trình)"
-[image_2024-06-03_174137251]: Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.005.png
-[image_2024-06-03_174137251]: Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.022.png
+[image_2024-06-03_174137251]: demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.005.png
+[image_2024-06-03_174137251]: demo/Aspose.Words.31067aa1-18b8-45e4-a3fb-37c62ff48090.022.png
