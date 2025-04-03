@@ -542,6 +542,12 @@ Lưu trữ thông tin phiếu mượn phòng gồm: tên người mượn, mã t
 
 <a name="_toc3393"></a>**Hình 2.37  Giao diện trang tạo lịch sử dụng phòng**
 
+<video width="320" height="240" controls>
+  <source src="demo/448221248_7972127899516212_879103393974927019_n.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
 
 1. ## ` `**<a name="_toc27021"></a>Mô tả chi tiết các chức năng cho từng vai trò (role) trong hệ thống:**
    1. ### ` `***<a name="_toc20385"></a><a name="_toc17425"></a>Admin***
